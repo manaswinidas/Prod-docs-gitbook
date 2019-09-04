@@ -12,6 +12,8 @@ In order to run the product-docs, you need to install [ccutil](https://pantheon.
 
 In order to run the community docs, you need to have Maven installed. If yes, goto `doc-content/drools-docs`, run `mvn clean install` and view the `index.html` in `target/generated-docs/html_single`.
 
+In order to run the PROD docs in gitbook, go to the `assemblies/assembly_dmn-models/dm/build/tmp/en-US/html-single` folder and run `gitbook serve`. You can see the documentation at `localhost:4000`. It may ask you to run `gitbook install`. You also may need to install gitbook CLI, if you don't have it already. Just run `npm install gitbook-cli -g` and run the commands again.
+
 In order to fetch from all subtrees in the root repository, run `git subtree pull-all`. 
 In order to push all changes in subtrees to the original projects from the root repository, run `git subtree push-all`.
 
