@@ -1,7 +1,7 @@
 * main
     * asciidoc
         * DMN
-            * [dmn-boxed-expressions-con](main/asciidoc/DMN/dmn-boxed-expressions-con.asciidoc)
+            * [dmn-boxed-expressions-con](dmn-boxed-expressions-con.asciidoc)
             * [dmn-con](main/asciidoc/DMN/dmn-con.asciidoc)
             * [dmn-conformance-levels-con](main/asciidoc/DMN/dmn-conformance-levels-con.asciidoc)
             * [dmn-context-expressions-con](main/asciidoc/DMN/dmn-context-expressions-con.asciidoc)
