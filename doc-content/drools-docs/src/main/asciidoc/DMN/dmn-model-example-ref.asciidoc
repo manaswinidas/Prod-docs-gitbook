@@ -1,4 +1,3 @@
-
 [id='dmn-model-example-ref_{context}']
 = DMN model example
 
@@ -358,3 +357,4 @@ The following is the DMN source file for this decision model:
   </dmn:businessKnowledgeModel>
 </dmn:definitions>
 ----
+

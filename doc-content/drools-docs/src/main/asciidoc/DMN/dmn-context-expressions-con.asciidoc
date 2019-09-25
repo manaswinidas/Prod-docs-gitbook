@@ -12,3 +12,4 @@ The following boxed context expression defines the factors that determine whethe
 
 .Boxed context expression for front-end client PITI ratio
 image::dmn/dmn-context-expression-example2.png[]
+

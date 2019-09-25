@@ -79,3 +79,4 @@ For completeness and orthogonality, this implementation also supports the follow
 ----
 date( "2017-05-12" ) - date( "2017-04-25" ) = duration( "P17D" )
 ----
+

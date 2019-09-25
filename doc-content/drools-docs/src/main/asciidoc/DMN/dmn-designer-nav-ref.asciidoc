@@ -32,3 +32,4 @@ image::dmn/dmn-designer-properties.png[]
 
 To view the properties of the entire DRD, click the DRD canvas background instead of a specific node.
 --
+

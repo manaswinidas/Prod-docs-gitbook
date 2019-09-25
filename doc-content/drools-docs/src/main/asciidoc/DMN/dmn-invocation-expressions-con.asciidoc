@@ -12,3 +12,5 @@ The following boxed invocation expression invokes an `InstallmentCalculation` bu
 
 .Boxed invocation expression for required monthly installment
 image::dmn/dmn-invocation-example2.png[]
+
+

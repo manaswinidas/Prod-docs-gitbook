@@ -7,3 +7,4 @@ For example, the following boxed relation expression provides information about 
 
 .Boxed relation expression with employee information
 image::dmn/dmn-relation-expression-example.png[]
+

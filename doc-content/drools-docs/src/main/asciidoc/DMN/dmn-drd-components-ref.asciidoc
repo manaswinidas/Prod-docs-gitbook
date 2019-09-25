@@ -164,3 +164,4 @@ In a DMN decision service node, the decision nodes in the bottom segment incorpo
 .Advanced DRD example: Lending strategy
 image::dmn/dmn-example-drd2.png[]
 ////
+

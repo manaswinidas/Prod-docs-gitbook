@@ -105,3 +105,4 @@ image::dmn/dmn-manage-data-types-structured3a.png[]
 
 .Parameter definitions with custom data types for online dating compatibility
 image::dmn/dmn-manage-data-types-structured3b.png[]
+

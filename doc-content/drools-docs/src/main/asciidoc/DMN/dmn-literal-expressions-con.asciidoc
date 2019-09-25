@@ -12,3 +12,4 @@ The following boxed literal expression sorts a list of possible dating candidate
 
 .Boxed literal expression for matching online dating candidates
 image::dmn/dmn-literal-expression-example3b.png[]
+

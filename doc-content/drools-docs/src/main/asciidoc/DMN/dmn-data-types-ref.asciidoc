@@ -229,3 +229,4 @@ For example, the following expression returns `4`:
 count([ 2, 3, 4, 5 ])
 ----
 --
+

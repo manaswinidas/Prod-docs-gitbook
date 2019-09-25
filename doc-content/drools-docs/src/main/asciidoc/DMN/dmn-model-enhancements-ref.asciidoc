@@ -14,3 +14,4 @@ Note that, for the "duration" types, the user can simply use `duration` and the 
 * __Lists support heterogeneous element types__: Currently this implementation supports lists with heterogeneous element types. This is an experimental extension and does limit the functionality of some functions and filters. This decision will be re-evaluated in the future.
 
 * __TypeRef link between Decision Tables and Item Definitions__: On decision tables/input clause, if no values list is defined, the {DECISION_ENGINE} automatically checks the type reference and applies the allowed values check if it is defined.
+

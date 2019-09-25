@@ -25,3 +25,4 @@ In order to make the language easier to use and avoid common errors due to space
 
 The keyword `in`::
 The keyword `in` is the only keyword in the language that cannot be used as part of a variable name. Although the specifications allow the use of keywords in the middle of variable names, the use of `in` in variable names conflicts with the grammar definition of `for`, `every` and `some` expression constructs.
+
