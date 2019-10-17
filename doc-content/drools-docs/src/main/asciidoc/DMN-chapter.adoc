@@ -2,37 +2,37 @@
 = Decision Model and Notation (DMN)
 :context: dmn-models
 
-include::DMN/dmn-con.asciidoc[leveloffset=+1]
+include::DMN/Getting-Started/Decision-Model-and-Notation(DMN)/dmn-con.asciidoc[leveloffset=+1]
 
-include::DMN/dmn-conformance-levels-con.asciidoc[leveloffset=+2]
+include::DMN/Getting-Started/Decision-Model-and-Notation(DMN)/dmn-conformance-levels-con.asciidoc[leveloffset=+2]
 
-include::DMN/dmn-drd-components-ref.asciidoc[leveloffset=+2]
+include::DMN/Getting-Started/Decision-Model-and-Notation(DMN)/dmn-drd-components-ref.asciidoc[leveloffset=+2]
 
-include::DMN/dmn-feel-con.asciidoc[leveloffset=+2]
+include::DMN/Getting-Started/Decision-Model-and-Notation(DMN)/dmn-feel-con.asciidoc[leveloffset=+2]
 
-include::DMN/dmn-names-con.asciidoc[leveloffset=+3]
+include::DMN/Getting-Started/Decision-Model-and-Notation(DMN)/dmn-names-con.asciidoc[leveloffset=+3]
 
-include::DMN/dmn-data-types-ref.asciidoc[leveloffset=+3]
+include::DMN/Getting-Started/Decision-Model-and-Notation(DMN)/dmn-data-types-ref.asciidoc[leveloffset=+3]
 
-include::DMN/dmn-boxed-expressions-con.asciidoc[leveloffset=+2]
+include::DMN/Getting-Started/Decision-Model-and-Notation(DMN)/dmn-boxed-expressions-con.asciidoc[leveloffset=+2]
 
-include::DMN/dmn-decision-tables-con.asciidoc[leveloffset=+3]
+include::DMN/Getting-Started/Decision-Model-and-Notation(DMN)/dmn-decision-tables-con.asciidoc[leveloffset=+3]
 
-include::DMN/dmn-decision-tables-hit-policies-con.asciidoc[leveloffset=+4]
+include::DMN/Getting-Started/Decision-Model-and-Notation(DMN)/dmn-decision-tables-hit-policies-con.asciidoc[leveloffset=+4]
 
-include::DMN/dmn-literal-expressions-con.asciidoc[leveloffset=+3]
+include::DMN/Getting-Started/Decision-Model-and-Notation(DMN)/dmn-literal-expressions-con.asciidoc[leveloffset=+3]
 
-include::DMN/dmn-context-expressions-con.asciidoc[leveloffset=+3]
+include::DMN/Getting-Started/Decision-Model-and-Notation(DMN)/dmn-context-expressions-con.asciidoc[leveloffset=+3]
 
-include::DMN/dmn-relation-expressions-con.asciidoc[leveloffset=+3]
+include::DMN/Getting-Started/Decision-Model-and-Notation(DMN)/dmn-relation-expressions-con.asciidoc[leveloffset=+3]
 
-include::DMN/dmn-function-expressions-con.asciidoc[leveloffset=+3]
+include::DMN/Getting-Started/Decision-Model-and-Notation(DMN)/dmn-function-expressions-con.asciidoc[leveloffset=+3]
 
-include::DMN/dmn-invocation-expressions-con.asciidoc[leveloffset=+3]
+include::DMN/Getting-Started/Decision-Model-and-Notation(DMN)/dmn-invocation-expressions-con.asciidoc[leveloffset=+3]
 
-include::DMN/dmn-model-example-ref.asciidoc[leveloffset=+2]
+include::DMN/Getting-Started/Decision-Model-and-Notation(DMN)/dmn-model-example-ref.asciidoc[leveloffset=+2]
 
-include::DMN/dmn-support-con.asciidoc[leveloffset=+1]
+include::DMN/Getting-Started/DMN-support-in-Red-Hat-Process-Automation-Manager/dmn-support-con.asciidoc[leveloffset=+1]
 
 ifdef::DROOLS[]
 include::DMN/dmn-feel-enhancements-ref.asciidoc[leveloffset=+2]
@@ -40,22 +40,22 @@ include::DMN/dmn-feel-enhancements-ref.asciidoc[leveloffset=+2]
 include::DMN/dmn-model-enhancements-ref.asciidoc[leveloffset=+2]
 endif::DROOLS[]
 
-include::DMN/dmn-properties-ref.asciidoc[leveloffset=+2]
+include::DMN/Getting-Started/DMN-support-in-Red-Hat-Process-Automation-Manager/dmn-properties-ref.asciidoc[leveloffset=+2]
 
-include::DMN/dmn-model-creating-proc.asciidoc[leveloffset=+1]
+include::DMN/Getting-Started/Creating-and-editing-DMN-models-in-Business-Central/dmn-model-creating-proc.asciidoc[leveloffset=+1]
 
-include::DMN/dmn-logic-defining-proc.asciidoc[leveloffset=+2]
+include::DMN/Getting-Started/Creating-and-editing-DMN-models-in-Business-Central/dmn-logic-defining-proc.asciidoc[leveloffset=+2]
 
-include::DMN/dmn-data-types-defining-proc.asciidoc[leveloffset=+2]
+include::DMN/Getting-Started/Creating-and-editing-DMN-models-in-Business-Central/dmn-data-types-defining-proc.asciidoc[leveloffset=+2]
 
-include::DMN/dmn-included-models-proc.asciidoc[leveloffset=+2]
+include::DMN/Getting-Started/Creating-and-editing-DMN-models-in-Business-Central/dmn-included-models-proc.asciidoc[leveloffset=+2]
 
-include::DMN/dmn-designer-nav-ref.asciidoc[leveloffset=+2]
+include::DMN/Getting-Started/Creating-and-editing-DMN-models-in-Business-Central/dmn-designer-nav-ref.asciidoc[leveloffset=+2]
 
-include::DMN/dmn-execution-con.asciidoc[leveloffset=+1]
+include::DMN/Getting-Started/DMN-model-execution/dmn-execution-con.asciidoc[leveloffset=+1]
 
-include::DMN/dmn-execution-embedded-proc.asciidoc[leveloffset=+2]
+include::DMN/Getting-Started/DMN-model-execution/dmn-execution-embedded-proc.asciidoc[leveloffset=+2]
 
-include::DMN/dmn-execution-remote-java-proc.asciidoc[leveloffset=+2]
+include::DMN/Getting-Started/DMN-model-execution/dmn-execution-remote-java-proc.asciidoc[leveloffset=+2]
 
-include::DMN/dmn-execution-rest-proc.asciidoc[leveloffset=+2]
+include::DMN/Getting-Started/DMN-model-execution/dmn-execution-rest-proc.asciidoc[leveloffset=+2]
