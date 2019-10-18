@@ -1,3 +1,324 @@
+[id='dmn-execution-con']
+= DMN model execution
+
+You can create or import DMN files in your {PRODUCT} project using {CENTRAL} or package the DMN files as part of your project knowledge JAR (KJAR) file without {CENTRAL}. After you implement your DMN files in your {PRODUCT} project, you can execute the DMN decision service by deploying the KIE container that contains it to {KIE_SERVER} for remote access
+ifeval::["{context}" == "decision-service-getting-started"]
+and interacting with the container using the {KIE_SERVER} REST API.
+endif::[]
+ifeval::["{context}" == "dmn-models"]
+or by manipulating the KIE container directly as a dependency of the calling application. Other options for creating and deploying DMN knowledge packages are also available, and most are similar for all types of knowledge assets, such as DRL files or process definitions.
+endif::[]
+
+For information about including external DMN assets with your project packaging and deployment method, see
+ifdef::DM,PAM[]
+{URL_PACKAGING_DEPLOYING_PROJECT}[_{PACKAGING_DEPLOYING_PROJECT}_].
+endif::[]
+ifdef::DROOLS,JBPM,OP[]
+<<_builddeployutilizeandrunsection>>.
+endif::[]
+
+[id='dmn-execution-embedded-proc']
+= Embedding a DMN call directly in a Java application
+
+A KIE container is local when the knowledge assets are either embedded directly into the calling program or are physically pulled in using Maven dependencies for the KJAR. You typically embed knowledge assets directly into a project if there is a tight relationship between the version of the code and the version of the DMN definition. Any changes to the decision take effect after you have intentionally updated and redeployed the application. A benefit of this approach is that proper operation does not rely on any external dependencies to the run time, which can be a limitation of locked-down environments.
+
+Using Maven dependencies enables further flexibility because the specific version of the decision can dynamically change, (for example, by using a system property), and it can be periodically scanned for updates and automatically updated. This introduces an external dependency on the deploy time of the service, but executes the decision locally, reducing reliance on an external service being available during run time.
+
+.Prerequisites
+* A KIE container is deployed in {KIE_SERVER} in the form of a KJAR that includes the DMN model, ideally compiled as an executable model for more efficient execution:
++
+--
+[source]
+----
+mvn clean install -DgenerateDMNModel=yes
+----
+
+For more information about project packaging and deployment and executable models, see
+ifdef::DM,PAM[]
+{URL_PACKAGING_DEPLOYING_PROJECT}[_{PACKAGING_DEPLOYING_PROJECT}_].
+endif::[]
+ifdef::DROOLS,JBPM,OP[]
+<<_builddeployutilizeandrunsection>>.
+endif::[]
+--
+
+.Procedure
+. In your client application, add the following dependencies to the relevant classpath of your Java project:
++
+--
+[source,xml,subs="attributes+"]
+----
+<!-- Required for the DMN runtime API -->
+<dependency>
+  <groupId>org.kie</groupId>
+  <artifactId>kie-dmn-core</artifactId>
+  <version>${{PRODUCT_INIT}.version}</version>
+</dependency>
+
+<!-- Required if not using classpath KIE container -->
+<dependency>
+  <groupId>org.kie</groupId>
+  <artifactId>kie-ci</artifactId>
+  <version>${{PRODUCT_INIT}.version}</version>
+</dependency>
+----
+
+The `<version>` is the Maven artifact version for {PRODUCT} currently used in your project (for example, {MAVEN_ARTIFACT_VERSION}).
+
+ifdef::DM,PAM[]
+[NOTE]
+====
+Instead of specifying a {PRODUCT} `<version>` for individual dependencies, consider adding the {PRODUCT_BA} bill of materials (BOM) dependency to your project `pom.xml` file. The {PRODUCT_BA} BOM applies to both {PRODUCT_DM} and {PRODUCT_PAM}. When you add the BOM files, the correct versions of transitive dependencies from the provided Maven repositories are included in the project.
+
+Example BOM dependency:
+
+[source,xml,subs="attributes+"]
+----
+<dependency>
+  <groupId>com.redhat.ba</groupId>
+  <artifactId>ba-platform-bom</artifactId>
+  <version>{BOM_VERSION}</version>
+  <scope>import</scope>
+  <type>pom</type>
+</dependency>
+----
+
+For more information about the {PRODUCT_BA} BOM, see
+ifdef::PAM[]
+https://access.redhat.com/solutions/3405361[What is the mapping between RHPAM product and maven library version?].
+endif::[]
+ifdef::DM[]
+https://access.redhat.com/solutions/3363991[What is the mapping between RHDM product and maven library version?].
+endif::[]
+====
+endif::DM,PAM[]
+--
+. Create a KIE container from `classpath` or `ReleaseId`:
++
+[source,java]
+----
+KieServices kieServices = KieServices.Factory.get();
+
+ReleaseId releaseId = kieServices.newReleaseId( "org.acme", "my-kjar", "1.0.0" );
+KieContainer kieContainer = kieServices.newKieContainer( releaseId );
+----
++
+Alternative option:
++
+[source,java]
+----
+KieServices kieServices = KieServices.Factory.get();
+
+KieContainer kieContainer = kieServices.getKieClasspathContainer();
+----
+
+. Obtain `DMNRuntime` from the KIE container and a reference to the DMN model to be evaluated, by using the model `namespace` and `modelName`:
++
+[source,java]
+----
+DMNRuntime dmnRuntime = KieRuntimeFactory.of(kieContainer.getKieBase()).get(DMNRuntime.class);
+
+String namespace = "http://www.redhat.com/_c7328033-c355-43cd-b616-0aceef80e52a";
+String modelName = "dmn-movieticket-ageclassification";
+
+DMNModel dmnModel = dmnRuntime.getModel(namespace, modelName);
+----
+
+. Execute the decision services for the desired model:
++
+[source,java]
+----
+DMNContext dmnContext = dmnRuntime.newContext();  // <1>
+
+for (Integer age : Arrays.asList(1,12,13,64,65,66)) {
+    dmnContext.set("Age", age);  // <2>
+    DMNResult dmnResult =
+        dmnRuntime.evaluateAll(dmnModel, dmnContext);  // <3>
+
+    for (DMNDecisionResult dr : dmnResult.getDecisionResults()) {  // <4>
+        log.info("Age: " + age + ", " +
+                 "Decision: '" + dr.getDecisionName() + "', " +
+                 "Result: " + dr.getResult());
+  }
+}
+----
+<1> Instantiate a new DMN Context to be the input for the model evaluation. Note that this example is looping through the Age Classification decision multiple times.
+<2> Assign input variables for the input DMN context.
+<3> Evaluate all DMN decisions defined in the DMN model.
+<4> Each evaluation may result in one or more results, creating the loop.
++
+--
+
+This example prints the following output:
+
+----
+Age 1 Decision 'AgeClassification' : Child
+Age 12 Decision 'AgeClassification' : Child
+Age 13 Decision 'AgeClassification' : Adult
+Age 64 Decision 'AgeClassification' : Adult
+Age 65 Decision 'AgeClassification' : Senior
+Age 66 Decision 'AgeClassification' : Senior
+----
+
+If the DMN model was not previously compiled as an executable model for more efficient execution, you can enable the following property when you execute your DMN models:
+
+[source]
+----
+-Dorg.kie.dmn.compiler.execmodel=true
+----
+--
+
+[id='dmn-execution-remote-java-proc']
+= Executing a DMN service using the {KIE_SERVER} Java client API
+
+The {KIE_SERVER} Java client API provides a lightweight approach to invoking a remote DMN service either through the REST or JMS interfaces of {KIE_SERVER}. This approach reduces the number of runtime dependencies necessary to interact with a KIE base. Decoupling the calling code from the decision definition also increases flexibility by enabling them to iterate independently at the appropriate pace.
+
+For more information about the {KIE_SERVER} Java client API, see
+ifdef::DM,PAM[]
+{URL_KIE_APIS}[_{KIE_APIS}_].
+endif::[]
+ifdef::DROOLS,JBPM,OP[]
+xref:kie-server-java-api-con_kie-apis[].
+endif::[]
+
+.Prerequisites
+* {KIE_SERVER} is installed and configured, including a known user name and credentials for a user with the `kie-server` role. For installation options, see
+ifdef::DM,PAM[]
+{URL_PLANNING_INSTALL}[_{PLANNING_INSTALL}_].
+endif::[]
+ifdef::DROOLS,JBPM,OP[]
+<<_installationandsetup>>.
+endif::[]
+* A KIE container is deployed in {KIE_SERVER} in the form of a KJAR that includes the DMN model, ideally compiled as an executable model for more efficient execution:
++
+--
+[source]
+----
+mvn clean install -DgenerateDMNModel=yes
+----
+
+For more information about project packaging and deployment and executable models, see
+ifdef::DM,PAM[]
+{URL_PACKAGING_DEPLOYING_PROJECT}[_{PACKAGING_DEPLOYING_PROJECT}_].
+endif::[]
+ifdef::DROOLS,JBPM,OP[]
+<<_builddeployutilizeandrunsection>>.
+endif::[]
+--
+* You have the container ID of the KIE container containing the DMN model. If more than one model is present, you must also know the model namespace and model name of the relevant model.
+
+.Procedure
+. In your client application, add the following dependency to the relevant classpath of your Java project:
++
+--
+[source,xml,subs="attributes+"]
+----
+<!-- Required for the {KIE_SERVER} Java client API -->
+<dependency>
+  <groupId>org.kie.server</groupId>
+  <artifactId>kie-server-client</artifactId>
+  <version>${{PRODUCT_INIT}.version}</version>
+</dependency>
+----
+
+The `<version>` is the Maven artifact version for {PRODUCT} currently used in your project (for example, {MAVEN_ARTIFACT_VERSION}).
+
+ifdef::DM,PAM[]
+[NOTE]
+====
+Instead of specifying a {PRODUCT} `<version>` for individual dependencies, consider adding the {PRODUCT_BA} bill of materials (BOM) dependency to your project `pom.xml` file. The {PRODUCT_BA} BOM applies to both {PRODUCT_DM} and {PRODUCT_PAM}. When you add the BOM files, the correct versions of transitive dependencies from the provided Maven repositories are included in the project.
+
+Example BOM dependency:
+
+[source,xml,subs="attributes+"]
+----
+<dependency>
+  <groupId>com.redhat.ba</groupId>
+  <artifactId>ba-platform-bom</artifactId>
+  <version>{BOM_VERSION}</version>
+  <scope>import</scope>
+  <type>pom</type>
+</dependency>
+----
+
+For more information about the {PRODUCT_BA} BOM, see
+ifdef::PAM[]
+https://access.redhat.com/solutions/3405361[What is the mapping between RHPAM product and maven library version?].
+endif::[]
+ifdef::DM[]
+https://access.redhat.com/solutions/3363991[What is the mapping between RHDM product and maven library version?].
+endif::[]
+====
+endif::DM,PAM[]
+--
+. Instantiate a `KieServicesClient` instance with the appropriate connection information.
++
+--
+Example:
+
+[source,java]
+----
+KieServicesConfiguration conf =
+    KieServicesFactory.newRestConfiguration(URL, USER, PASSWORD); // <1>
+
+conf.setMarshallingFormat(MarshallingFormat.JSON);  // <2>
+
+KieServicesClient kieServicesClient = KieServicesFactory.newKieServicesClient(conf);
+----
+<1> The connection information:
+* Example URL: `\http://localhost:8080/kie-server/services/rest/server`
+* The credentials should reference a user with the `kie-server` role.
+<2> The Marshalling format is an instance of `org.kie.server.api.marshalling.MarshallingFormat`. It controls whether the messages will be JSON or XML. Options for Marshalling format are JSON, JAXB, or XSTREAM.
+--
+. Obtain a `DMNServicesClient` from the KIE server Java client connected to the related {KIE_SERVER} by invoking the method `getServicesClient()` on the KIE server Java client instance:
++
+[source,java]
+----
+DMNServicesClient dmnClient = kieServicesClient.getServicesClient(DMNServicesClient.class );
+----
++
+The `dmnClient` can now execute decision services on {KIE_SERVER}.
+
+. Execute the decision services for the desired model.
++
+--
+Example:
+
+[source,java]
+----
+for (Integer age : Arrays.asList(1,12,13,64,65,66)) {
+    DMNContext dmnContext = dmnClient.newContext(); // <1>
+    dmnContext.set("Age", age);  // <2>
+    ServiceResponse<DMNResult> serverResp =   // <3>
+        dmnClient.evaluateAll($kieContainerId,
+                              $modelNamespace,
+                              $modelName,
+                              dmnContext);
+
+    DMNResult dmnResult = serverResp.getResult();  // <4>
+    for (DMNDecisionResult dr : dmnResult.getDecisionResults()) {
+        log.info("Age: " + age + ", " +
+                 "Decision: '" + dr.getDecisionName() + "', " +
+                 "Result: " + dr.getResult());
+    }
+}
+----
+<1> Instantiate a new DMN Context to be the input for the model evaluation. Note that this example is looping through the Age Classification decision multiple times.
+<2> Assign input variables for the input DMN Context.
+<3> Evaluate all the DMN Decisions defined in the DMN model:
+* `$kieContainerId` is the ID of the container where the KJAR containing the DMN model is deployed
+* `$modelNamespace` is the namespace for the model.
+* `$modelName` is the name for the model.
+<4> The DMN Result object is available from the server response.
+
+At this point, the `dmnResult` contains all the decision results from the evaluated DMN model.
+
+You can also execute only a specific DMN decision in the model by using alternative methods of the `DMNServicesClient`.
+
+NOTE: If the KIE container only contains one DMN model, you can omit `$modelNamespace` and `$modelName` because the {KIE_SERVER} API selects it by default.
+
+--
+
 [id='dmn-execution-rest-proc']
 = Executing a DMN service using the {KIE_SERVER} REST API
 
