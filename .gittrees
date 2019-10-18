@@ -1,4 +1,4 @@
-[subtree "doc-content/drools-docs/src/main/asciidoc/source"]
+[subtree "doc-content/drools-docs/src/main/asciidoc/DMN"]
 	url = https://github.com/manaswinidas/DMN.wiki.git
-	path = doc-content/drools-docs/src/main/asciidoc/source
+	path = doc-content/drools-docs/src/main/asciidoc/DMN
 	branch = master
