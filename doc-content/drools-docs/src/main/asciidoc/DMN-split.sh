@@ -1,20 +1,29 @@
 #!/bin/bash
-sudo chmod -R 777 ../asciidoc
+sudo chmod -R 777 ../Adoc-test
+rm -rf DMN
 mkdir DMN
-csplit --quiet --prefix=DMN/ source/DMN-source.asciidoc "/\[id/" "{*}"
-find DMN/ -size 0 -delete
-cd DMN
-for file in {01..24}
+for files in DMN-subtree/Authorising-Rules/Designing-a-decision-service-using-DMN-models/Decision-Model-and-Notation-DMN/*.asciidoc
 do
-    # sed -n "s/^.*'\(.*\)_{context}'.$/\1/ p" $file <<< ${bigname}
-    bigname=$(sed -n "s/^.*'\(.*\)_{context}'.$/\1/ p" $file)
-    sudo mv -v "$file" "$bigname.asciidoc"
-    # "s/^.*'\(.*\)'.*$/\1/ p"
+    csplit --quiet --prefix=DMN/ $files "/\[id/" "{*}"
+    find DMN/ -size 0 -delete
+    cd DMN
+    for file in *
+    do
+        # sed -n "s/^.*'\(.*\)_{context}'.$/\1/ p" $file <<< ${bigname}
+        bigname=$(sed -n "s/^.*'\(.*\)_{context}'.$/\1/ p" $file)
+        sudo mv -v "$file" "$bigname.asciidoc"
+        # "s/^.*'\(.*\)'.*$/\1/ p"
+    done
+    cd ..
+    sudo chmod -R 777 DMN
 done
-for file in {25..28}
+csplit --quiet --prefix=DMN/ DMN-subtree/Authorising-Rules/Designing-a-decision-service-using-DMN-models/Decision-Model-and-Notation-DMN/DMN-model-execution.asciidoc "/\[id/" "{*}"
+find DMN/ -size 0 -delete
+sudo chmod -R 777 DMN
+cd DMN
+for file in {01..04}
 do 
     # sed -n "s/^.*'\(.*\)'.$/\1/ p" $file <<< ${name} 
     name=$(sed -n "s/^.*'\(.*\)'.$/\1/ p" $file)
     sudo mv -v "$file" "$name.asciidoc"
 done
-sudo chmod -R 777 ../DMN
