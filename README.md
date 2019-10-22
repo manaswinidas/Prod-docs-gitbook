@@ -19,11 +19,11 @@ In order to push all changes in subtrees to the original projects from the root 
 
 # Steps to reproduce
 
-If you go to the `.gittrees` file, you can see a "DMN" subtree. The DMN repository has been added as a subtree for test purposes. Following are the steps to add a subtree:
+If you go to the `.gittrees` file, you can see a "DMN-subtree" subtree. The DMN wiki repository at [https://github.com/manaswinidas/DMN/wiki](https://github.com/manaswinidas/DMN/wiki) has been added as a subtree for test purposes. Following are the steps to add a subtree:
 
 `git remote add -f DMN git@github.com:manaswinidas/DMN.git`
 
-`git subtree add --prefix=doc-content/drools-docs/src/main/asciidoc/DMN git@github.com:manaswinidas/DMN.git master`
+`git subtree add --prefix=doc-content/drools-docs/src/main/asciidoc/DMN-subtree git@github.com:manaswinidas/DMN.git master`
 
 The latter adds a subtree to `.gittrees` and adds a folder in the given path.
 
