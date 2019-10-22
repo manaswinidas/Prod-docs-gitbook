@@ -1,5 +1,5 @@
 #!/bin/bash
-sudo chmod -R 777 ../Adoc-test
+sudo chmod -R 777 ../asciidoc
 rm -rf DMN
 mkdir DMN
 for files in DMN-subtree/Authorising-Rules/Designing-a-decision-service-using-DMN-models/Decision-Model-and-Notation-DMN/*.asciidoc
