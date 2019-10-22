@@ -12,7 +12,7 @@
 	<info>
 		<title>Designing a decision service using DMN models</title>
 		<subtitle></subtitle>
-		 <date>2019-10-17</date>
+		 <date>2019-10-22</date>
 		<xi:include href="Author_Group.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
 		<authorinitials>RC</authorinitials><productname>Red Hat Decision Manager</productname>
 		<productnumber>7.5</productnumber>

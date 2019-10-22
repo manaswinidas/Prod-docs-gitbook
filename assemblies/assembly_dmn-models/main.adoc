@@ -15,7 +15,7 @@ As a business analyst or business rules developer, you can use Decision Model an
 For more information about DMN, see the Object Management Group (OMG) https://www.omg.org/spec/DMN[Decision Model and Notation specification].
 
 // Modules - concepts, procedures, refs, etc.
-include::{drools-dir}/DMN/Getting-Started/Decision-Model-and-Notation(DMN)/dmn-con.asciidoc[leveloffset=+1]
+include::{drools-dir}/DMN/dmn-con.asciidoc[leveloffset=+1]
 
 include::{drools-dir}/DMN/dmn-conformance-levels-con.asciidoc[leveloffset=+2]
 
@@ -31,7 +31,7 @@ include::{drools-dir}/DMN/dmn-boxed-expressions-con.asciidoc[leveloffset=+2]
 
 include::{drools-dir}/DMN/dmn-decision-tables-con.asciidoc[leveloffset=+3]
 
-include::{drools-dir}/DMN/Getting-Started/Decision-Model-and-Notation(DMN)/dmn-decision-tables-hit-policies-con.asciidoc[leveloffset=+4]
+include::{drools-dir}/DMN/dmn-decision-tables-hit-policies-con.asciidoc[leveloffset=+4]
 
 include::{drools-dir}/DMN/dmn-literal-expressions-con.asciidoc[leveloffset=+3]
 
