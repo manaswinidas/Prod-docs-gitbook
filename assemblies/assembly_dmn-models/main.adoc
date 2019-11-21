@@ -81,3 +81,5 @@ include::{drools-dir}/DMN/dmn-execution-rest-proc.asciidoc[leveloffset=+2]
 
 // Versioning info
 include::_artifacts/versioning-information.adoc[]
+
+// End of main.adoc

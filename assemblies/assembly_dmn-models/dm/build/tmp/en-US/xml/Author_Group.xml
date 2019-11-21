@@ -8,10 +8,6 @@
 %DOCBOOK_ENTS;
 ]>
 <authorgroup version="5.0" xml:lang="en-US" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
-	<author>
-		<personname><firstname>Red Hat</firstname>
-		<surname>Customer Content Services</surname>
-		</personname><email>brms-docs@redhat.com</email>
-	</author>
+	<orgname>Red Hat Customer Content Services</orgname>
 </authorgroup>
 
