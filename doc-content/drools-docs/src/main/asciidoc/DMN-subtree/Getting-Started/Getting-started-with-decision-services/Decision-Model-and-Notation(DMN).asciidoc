@@ -1,3 +1,7 @@
+[id='gs-dmn-con']
+
+include::DMNDS/dmn-con.asciidoc[leveloffset=+1]
+
 [id='gs-dmn-gs-creating-drd-proc']
 = Creating the traffic violations DMN decision requirements diagram (DRD)
 
