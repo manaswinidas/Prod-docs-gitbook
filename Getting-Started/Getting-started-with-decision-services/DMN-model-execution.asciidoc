@@ -1,0 +1,9 @@
+[id='gs-dmn-execution-con']
+= DMN model execution
+
+include::DMNDS/dmn-execution-con.asciidoc[leveloffset=+1]
+
+[id='gs-dmn-execution-rest-proc']
+= DMN model execution
+
+include::DMNDS/dmn-execution-rest-proc.asciidoc[leveloffset=+2]

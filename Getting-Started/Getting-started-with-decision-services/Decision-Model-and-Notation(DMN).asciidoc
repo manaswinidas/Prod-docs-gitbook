@@ -1,4 +1,4 @@
-[id='dmn-gs-creating-drd-proc']
+[id='gs-dmn-gs-creating-drd-proc']
 = Creating the traffic violations DMN decision requirements diagram (DRD)
 
 A decision requirements diagram (DRD) is a visual representation of your DMN model. Use the  DMN designer in {CENTRAL} to design the DRD for the traffic violations project and to define the decision logic of the DRD components.
@@ -26,7 +26,7 @@ image::dmn/dmn-traffic-violations-drd.png[]
 . Click the *Fine* decision node, select the *Create DMN Information Requirement* icon, and select the *Should the driver be suspended?* decision node.
 . Click *Save* and click *Save* again to confirm.
 
-[id='dmn-gs-creating-custom-datatypes-proc']
+[id='gs-dmn-gs-creating-custom-datatypes-proc']
 = Creating the traffic violations DMN custom data types
 
 DMN data types determine the structure of the data that you use within a table, column, or field in a DMN boxed expression for defining decision logic. You can use default DMN data types (such as string, number, or boolean) or you can create custom data types to specify additional fields and constraints that you want to implement for the boxed expression values. Use the DMN designer's *Data Types* tab in {CENTRAL} to define the custom data types for the traffic violations project.
@@ -125,7 +125,7 @@ image::dmn/dmn-tFine-custom-datatype.png[]
 
 . Once all the three custom data types are created, click *Save* to open the *Confirm Save* dialog box and click *Save* again.
 
-[id='dmn-gs-assigning-custom-datatypes-proc']
+[id='gs-dmn-gs-assigning-custom-datatypes-proc']
 = Assigning custom data types to the DRD input and decision nodes
 
 After you create the DMN custom data types, assign them to the appropriate *DMN Input Data* and *DMN Decision* nodes in the traffic violations DRD.
@@ -147,7 +147,7 @@ After you create the DMN custom data types, assign them to the appropriate *DMN 
 
 You have assigned the custom data types to your DRD's input and decision nodes.
 
-[id='dmn-gs-defining-decision-logic-proc']
+[id='gs-dmn-gs-defining-decision-logic-proc']
 = Defining the traffic violations DMN decision logic
 
 To calculate the fine and to decide whether the driver is to be suspended or not, you can define the traffic violations DMN decision logic using a DMN decision table and context boxed expression.

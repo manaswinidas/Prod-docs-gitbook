@@ -1,4 +1,4 @@
-[id='decision-examples-central-con_{context}']
+[id='gs-decision-examples-central-con_{context}']
 
 = Example projects and business assets in {CENTRAL}
 
@@ -35,7 +35,7 @@ endif::[]
 * *Course_Scheduling*: (Business optimization) Example course scheduling and curriculum decision process. Assigns lectures to rooms and determines a student's curriculum based on factors, such as course conflicts and class room capacity.
 * *Dinner_Party*: (Business optimization) Guest seating optimization using guided decision tables. Assigns guest seating based on each guest's job type, political beliefs, and known relationships.
 
-[id='decision-examples-central-proc_{context}']
+[id='gs-decision-examples-central-proc_{context}']
 
 = Accessing example projects and business assets in {CENTRAL}
 
