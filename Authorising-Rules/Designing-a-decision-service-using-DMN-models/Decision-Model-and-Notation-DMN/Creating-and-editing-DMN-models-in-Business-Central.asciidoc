@@ -1,4 +1,4 @@
-[id='dmn-model-creating-proc_{context}']
+[id='ds-dmn-model-creating-proc_{context}']
 = Creating and editing DMN models in {CENTRAL}
 
 You can use the DMN designer in {CENTRAL} to design DMN decision requirements diagrams (DRDs) and define decision logic for a complete and functional DMN decision model. {PRODUCT} provides design and runtime support for DMN 1.2 models at conformance level 3, and includes enhancements and fixes to FEEL and DMN model components to optimize the experience of implementing DMN decision services with {PRODUCT}.
@@ -116,7 +116,7 @@ image::dmn/dmn-example-drd3.png[width=90%]
 In a DMN decision service node, the decision nodes in the bottom segment incorporate input data from outside of the decision service to arrive at a final decision in the top segment of the decision service node. The resulting top-level decisions from the decision service are then implemented in any subsequent decisions or business knowledge requirements of the DMN model. You can reuse DMN decision services in other DMN models to apply the same decision logic with different input data and different outgoing connections.
 --
 
-[id='dmn-logic-defining-proc_{context}']
+[id='ds-dmn-logic-defining-proc_{context}']
 = Defining DMN decision logic in boxed expressions in {CENTRAL}
 
 Boxed expressions in DMN are tables that you use to define the underlying logic of decision nodes and business knowledge models in a decision requirements diagram (DRD) or decision requirements graph (DRG). Some boxed expressions can contain other boxed expressions, but the top-level boxed expression corresponds to the decision logic of a single DRD artifact. While DRDs with one or more DRGs represent the flow of a DMN decision model, boxed expressions define the actual decision logic of individual nodes. DRDs and boxed expressions together form a complete and functional DMN decision model.
@@ -215,7 +215,7 @@ image::dmn/dmn-function-expression-example3.png[]
 
 For more information and examples of each boxed expression type, see xref:dmn-boxed-expressions-con_dmn-models[].
 
-[id='dmn-data-types-defining-proc_{context}']
+[id='ds-dmn-data-types-defining-proc_{context}']
 = Creating custom data types for DMN boxed expressions in {CENTRAL}
 
 In DMN boxed expressions in {CENTRAL}, data types determine the structure of the data that you use within an associated table, column, or field in the boxed expression. You can use default DMN data types (such as String, Number, Boolean) or you can create custom data types to specify additional fields and constraints that you want to implement for the boxed expression values.
@@ -323,7 +323,7 @@ image::dmn/dmn-manage-data-types-structured3a.png[]
 .Parameter definitions with custom data types for online dating compatibility
 image::dmn/dmn-manage-data-types-structured3b.png[]
 
-[id='dmn-included-models-proc_{context}']
+[id='ds-dmn-included-models-proc_{context}']
 = Including other DMN models within a DMN file in {CENTRAL}
 
 In {CENTRAL}, you can include other DMN models from your project in a specified DMN file so that you can reuse the decision requirements diagram (DRD) components of the included models in that DMN file. When you include a DMN model within another DMN file, you can use all of the nodes and logic from both models in the same DRD, but you cannot edit the nodes from the included model. To edit nodes from included models, you must update the source file for the included model directly. All changes to the source of the included model are automatically applied across DMN files that include that model.
@@ -365,7 +365,7 @@ To edit the included model name or to remove the included model from the DMN fil
 IMPORTANT: When you remove an included model, any nodes from that included model that are currently used in the DRD are also removed.
 --
 
-[id='dmn-designer-nav-ref_{context}']
+[id='ds-dmn-designer-nav-ref_{context}']
 = DMN designer navigation and properties in {CENTRAL}
 
 The DMN designer in {CENTRAL} provides the following additional features to help you navigate through the components and properties of decision requirements diagrams (DRDs).
