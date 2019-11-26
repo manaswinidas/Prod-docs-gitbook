@@ -1,11 +1,11 @@
-[id='dmn-con_{context}']
+[id='ds-dmn-con_{context}']
 = Decision Model and Notation (DMN)
 
 Decision Model and Notation (DMN) is a standard established by the Object Management Group (OMG) for describing and modeling operational decisions. DMN defines an XML schema that enables DMN models to be shared between DMN-compliant platforms and across organizations so that business analysts and business rules developers can collaborate in designing and implementing DMN decision services. The DMN standard is similar to and can be used together with the Business Process Model and Notation (BPMN) standard for designing and modeling business processes.
 
 For more information about the background and applications of DMN, see the OMG https://www.omg.org/spec/DMN[Decision Model and Notation specification].
 
-[id='dmn-conformance-levels-con_{context}']
+[id='ds-dmn-conformance-levels-con_{context}']
 = DMN conformance levels
 
 The DMN specification defines three incremental levels of conformance in a software implementation. A product that claims compliance at one level must also be compliant with any preceding levels. For example, a conformance level 3 implementation must also include the supported components in conformance levels 1 and 2. For the formal definitions of each conformance level, see the OMG https://www.omg.org/spec/DMN[Decision Model and Notation specification].
@@ -23,7 +23,7 @@ A DMN conformance level 3 implementation includes the requirements in conformanc
 
 {PRODUCT} provides design and runtime support for DMN 1.2 models at conformance level 3. You can design your DMN models directly in {CENTRAL} or import existing DMN models into your {PRODUCT} projects for deployment and execution.
 
-[id='dmn-drd-components-ref_{context}']
+[id='ds-dmn-drd-components-ref_{context}']
 = DMN decision requirements diagram (DRD) components
 
 A decision requirements diagram (DRD) is a visual representation of your DMN model. This diagram consists of one or more decision requirements graphs (DRGs) that represent a particular domain of an overall DRD. The DRGs trace business decisions using decision nodes, business knowledge models, sources of business knowledge, input data, and decision services.
@@ -190,14 +190,14 @@ In a DMN decision service node, the decision nodes in the bottom segment incorpo
 image::dmn/dmn-example-drd2.png[]
 ////
 
-[id='dmn-feel-con_{context}']
+[id='ds-dmn-feel-con_{context}']
 = Rule expressions in FEEL
 
 Friendly Enough Expression Language (FEEL) is an expression language defined by the Object Management Group (OMG) DMN specification. FEEL expressions define the logic of a decision in a DMN model. FEEL is designed to facilitate both decision modeling and execution by assigning semantics to the decision model constructs. FEEL expressions in decision requirements diagrams (DRDs) occupy table cells in boxed expressions for decision nodes and business knowledge models.
 
 For more information about FEEL in DMN, see the OMG https://www.omg.org/spec/DMN[Decision Model and Notation specification].
 
-[id='dmn-names-con_{context}']
+[id='ds-dmn-names-con_{context}']
 = Variable and function names in FEEL
 
 Unlike many traditional expression languages, Friendly Enough Expression Language (FEEL) supports spaces and a few special characters as part of variable and function names. A FEEL name must start with a `letter`, `?`, or `_` element. The unicode letter characters are also allowed. Variable names cannot start with a language keyword, such as `and`, `true`, or `every`. The remaining characters in a variable name can be any of the starting characters, as well as `digits`, white spaces, and special characters such as `+`, `-`, `/`, `*`, `'`, and `.`.
@@ -225,7 +225,7 @@ In order to make the language easier to use and avoid common errors due to space
 The keyword `in`::
 The keyword `in` is the only keyword in the language that cannot be used as part of a variable name. Although the specifications allow the use of keywords in the middle of variable names, the use of `in` in variable names conflicts with the grammar definition of `for`, `every` and `some` expression constructs.
 
-[id='dmn-data-types-ref_{context}']
+[id='ds-dmn-data-types-ref_{context}']
 = Data types in FEEL
 
 Friendly Enough Expression Language (FEEL) supports the following data types:
@@ -457,7 +457,7 @@ count([ 2, 3, 4, 5 ])
 ----
 --
 
-[id='dmn-boxed-expressions-con_{context}']
+[id='ds-dmn-boxed-expressions-con_{context}']
 = DMN decision logic in boxed expressions
 
 Boxed expressions in DMN are tables that you use to define the underlying logic of decision nodes and business knowledge models in a decision requirements diagram (DRD) or decision requirements graph (DRG). Some boxed expressions can contain other boxed expressions, but the top-level boxed expression corresponds to the decision logic of a single DRD artifact. While DRDs with one or more DRGs represent the flow of a DMN decision model, boxed expressions define the actual decision logic of individual nodes. DRDs and boxed expressions together form a complete and functional DMN decision model.
@@ -476,7 +476,7 @@ NOTE: {PRODUCT} does not provide boxed list expressions in {CENTRAL}, but suppor
 
 All Friendly Enough Expression Language (FEEL) expressions that you use in your boxed expressions must conform to the FEEL syntax requirements in the OMG https://www.omg.org/spec/DMN[Decision Model and Notation specification].
 
-[id='dmn-decision-tables-con_{context}']
+[id='ds-dmn-decision-tables-con_{context}']
 = DMN decision tables
 
 A decision table in DMN is a visual representation of one or more business rules in a tabular format. You use decision tables to define rules for a decision node that applies those rules at a given point in the decision model. Each rule consists of a single row in the table, and includes columns that define the conditions (input) and outcome (output) for that particular row. The definition of each row is precise enough to derive the outcome using the values of the conditions. Input and output values can be FEEL expressions or defined data type values.
@@ -506,7 +506,7 @@ ifdef::DROOLS,JBPM,OP[]
 xref:decision-tables-con_decision-tables[].
 endif::[]
 
-[id='dmn-decision-tables-hit-policies-con_{context}']
+[id='ds-dmn-decision-tables-hit-policies-con_{context}']
 
 = Hit policies in DMN decision tables
 
@@ -525,7 +525,7 @@ The following decision table hit policies are supported in DMN:
 ** *Collect Max (C>):* Outputs the maximum value among the matches. The resulting values must be comparable, such as numbers, dates or text (lexicographic order).
 ** *Collect Count (C#):* Outputs the number of matching rules.
 
-[id='dmn-literal-expressions-con_{context}']
+[id='ds-dmn-literal-expressions-con_{context}']
 = Boxed literal expressions
 
 A boxed literal expression in DMN is a literal FEEL expression as text in a table cell, typically with a labeled column and an assigned data type. You use boxed literal expressions to define simple or complex node logic or decision data directly in FEEL for a particular node in a decision. Literal FEEL expressions must conform to FEEL syntax requirements in the OMG https://www.omg.org/spec/DMN[Decision Model and Notation specification].
@@ -540,7 +540,7 @@ The following boxed literal expression sorts a list of possible dating candidate
 .Boxed literal expression for matching online dating candidates
 image::dmn/dmn-literal-expression-example3b.png[]
 
-[id='dmn-context-expressions-con_{context}']
+[id='ds-dmn-context-expressions-con_{context}']
 = Boxed context expressions
 
 A boxed context expression in DMN is a set of variable names and values with a result value. Each name-value pair is a context entry. You use context expressions to represent data definitions in decision logic and set a value for a desired decision element within the DMN decision model. A value in a boxed context expression can be a data type value or FEEL expression, or can contain a nested sub-expression of any type, such as a decision table, a literal expression, or another context expression.
@@ -555,7 +555,7 @@ The following boxed context expression defines the factors that determine whethe
 .Boxed context expression for front-end client PITI ratio
 image::dmn/dmn-context-expression-example2.png[]
 
-[id='dmn-relation-expressions-con_{context}']
+[id='ds-dmn-relation-expressions-con_{context}']
 = Boxed relation expressions
 
 A boxed relation expression in DMN is a traditional data table with information about given entities, listed as rows. You use boxed relation tables to define decision data for relevant entities in a decision at a particular node. Boxed relation expressions are similar to context expressions in that they set variable names and values, but relation expressions contain no result value and list all variable values based on a single defined variable in each column.
@@ -565,7 +565,7 @@ For example, the following boxed relation expression provides information about 
 .Boxed relation expression with employee information
 image::dmn/dmn-relation-expression-example.png[]
 
-[id='dmn-function-expressions-con_{context}']
+[id='ds-dmn-function-expressions-con_{context}']
 = Boxed function expressions
 
 A boxed function expression in DMN is a parameterized boxed expression containing a literal FEEL expression, a nested context expression of an external JAVA or PMML function, or a nested boxed expression of any type. By default, all business knowledge models are defined as boxed function expressions. You use boxed function expressions to call functions on your decision logic and to define all business knowledge models.
@@ -585,7 +585,7 @@ The following boxed function expression determines a monthly mortgage installmen
 .Boxed function expression for installment calculation in business knowledge model
 image::dmn/dmn-function-expression-example3.png[]
 
-[id='dmn-invocation-expressions-con_{context}']
+[id='ds-dmn-invocation-expressions-con_{context}']
 = Boxed invocation expressions
 
 A boxed invocation expression in DMN is a boxed expression that invokes a business knowledge model. A boxed invocation expression contains the name of the business knowledge model to be invoked and a list of parameter bindings. Each binding is represented by two boxed expressions on a row: The box on the left contains the name of a parameter and the box on the right contains the binding expression whose value is assigned to the parameter to evaluate the invoked business knowledge model. You use boxed invocations to invoke at a particular decision node a business knowledge model defined in the decision model.
@@ -601,7 +601,7 @@ The following boxed invocation expression invokes an `InstallmentCalculation` bu
 image::dmn/dmn-invocation-example2.png[]
 
 
-[id='dmn-model-example-ref_{context}']
+[id='ds-dmn-model-example-ref_{context}']
 = DMN model example
 
 The following is a real-world DMN model example that demonstrates how you can use decision modeling to reach a decision based on input data, circumstances, and company guidelines. In this scenario, a flight from San Diego to New York is canceled, requiring the affected airline to find alternate arrangements for its inconvenienced passengers.
