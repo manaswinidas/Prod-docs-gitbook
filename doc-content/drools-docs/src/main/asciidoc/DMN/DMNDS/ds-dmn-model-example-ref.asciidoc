@@ -1,4 +1,4 @@
-[id='dmn-model-example-ref_{context}']
+[id='ds-dmn-model-example-ref_{context}']
 = DMN model example
 
 The following is a real-world DMN model example that demonstrates how you can use decision modeling to reach a decision based on input data, circumstances, and company guidelines. In this scenario, a flight from San Diego to New York is canceled, requiring the affected airline to find alternate arrangements for its inconvenienced passengers.

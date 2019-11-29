@@ -1,4 +1,4 @@
-[id='dmn-properties-ref_{context}']
+[id='ds-dmn-properties-ref_{context}']
 = Configurable DMN properties in {PRODUCT}
 
 {PRODUCT} provides the following DMN properties that you can configure when you execute your DMN models on {KIE_SERVER} or on your client application:

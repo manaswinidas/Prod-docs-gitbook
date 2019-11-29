@@ -1,4 +1,4 @@
-[id='dmn-execution-embedded-proc']
+[id='ds-dmn-execution-embedded-proc']
 = Embedding a DMN call directly in a Java application
 
 A KIE container is local when the knowledge assets are either embedded directly into the calling program or are physically pulled in using Maven dependencies for the KJAR. You typically embed knowledge assets directly into a project if there is a tight relationship between the version of the code and the version of the DMN definition. Any changes to the decision take effect after you have intentionally updated and redeployed the application. A benefit of this approach is that proper operation does not rely on any external dependencies to the run time, which can be a limitation of locked-down environments.

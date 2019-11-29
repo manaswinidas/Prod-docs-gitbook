@@ -1,4 +1,4 @@
-[id='dmn-data-types-ref_{context}']
+[id='ds-dmn-data-types-ref_{context}']
 = Data types in FEEL
 
 Friendly Enough Expression Language (FEEL) supports the following data types:

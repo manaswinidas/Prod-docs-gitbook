@@ -1,4 +1,4 @@
-[id='dmn-decision-tables-hit-policies-con_{context}']
+[id='ds-dmn-decision-tables-hit-policies-con_{context}']
 
 = Hit policies in DMN decision tables
 

@@ -1,4 +1,4 @@
-[id='dmn-drd-components-ref_{context}']
+[id='ds-dmn-drd-components-ref_{context}']
 = DMN decision requirements diagram (DRD) components
 
 A decision requirements diagram (DRD) is a visual representation of your DMN model. This diagram consists of one or more decision requirements graphs (DRGs) that represent a particular domain of an overall DRD. The DRGs trace business decisions using decision nodes, business knowledge models, sources of business knowledge, input data, and decision services.

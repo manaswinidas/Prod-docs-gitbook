@@ -1,4 +1,4 @@
-[id='dmn-decision-tables-con_{context}']
+[id='ds-dmn-decision-tables-con_{context}']
 = DMN decision tables
 
 A decision table in DMN is a visual representation of one or more business rules in a tabular format. You use decision tables to define rules for a decision node that applies those rules at a given point in the decision model. Each rule consists of a single row in the table, and includes columns that define the conditions (input) and outcome (output) for that particular row. The definition of each row is precise enough to derive the outcome using the values of the conditions. Input and output values can be FEEL expressions or defined data type values.

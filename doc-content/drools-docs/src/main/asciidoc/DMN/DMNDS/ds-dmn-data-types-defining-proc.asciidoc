@@ -1,4 +1,4 @@
-[id='dmn-data-types-defining-proc_{context}']
+[id='ds-dmn-data-types-defining-proc_{context}']
 = Creating custom data types for DMN boxed expressions in {CENTRAL}
 
 In DMN boxed expressions in {CENTRAL}, data types determine the structure of the data that you use within an associated table, column, or field in the boxed expression. You can use default DMN data types (such as String, Number, Boolean) or you can create custom data types to specify additional fields and constraints that you want to implement for the boxed expression values.
