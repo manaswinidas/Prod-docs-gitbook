@@ -72,9 +72,9 @@ image::dmn/dmn-function-expression-example4.png[]
 ////
 NOTE: This PITI calculation logic can also be expressed as a boxed literal expression outside of a business knowledge model, but because business knowledge models are defined as function expressions, this expression becomes a function in this case. This requirement applies to any expression types that you use in business knowledge models.
 
-For more details about the types of boxed expressions, see xref:dmn-boxed-expressions-con_dmn-models[].
+For more details about the types of boxed expressions, see xref:ds-dmn-boxed-expressions-con_dmn-models[].
 
-For more details about defining decision logic in boxed expressions, see xref:dmn-defining-logic-proc_dmn-models[].
+For more details about defining decision logic in boxed expressions, see xref:ds-dmn-defining-logic-proc_dmn-models[].
 ////
 --
 . After you define the decision logic for the selected node, click *Back to "<MODEL_NAME>"* to return to the DRD view.
@@ -90,7 +90,7 @@ The following connection types are available, depending on the node type:
 * *Authority requirement*: Use this connection from an input data node or a decision node to a dependent knowledge source or from a knowledge source to a decision node, business knowledge model, or another knowledge source.
 * *Association*: Use this connection from an input data node, decision node, business knowledge model, or knowledge source to a text annotation.
 ////
-For more details about DRD components and connector rules, see xref:dmn-drd-components-ref_dmn-models[].
+For more details about DRD components and connector rules, see xref:ds-dmn-drd-components-ref_dmn-models[].
 ////
 
 .Connecting credit score input to the credit score rating decision
@@ -213,7 +213,7 @@ The following boxed function expression determines a monthly mortgage installmen
 .Boxed function expression for installment calculation in business knowledge model
 image::dmn/dmn-function-expression-example3.png[]
 
-For more information and examples of each boxed expression type, see xref:dmn-boxed-expressions-con_dmn-models[].
+For more information and examples of each boxed expression type, see xref:ds-dmn-boxed-expressions-con_dmn-models[].
 
 [id='ds-dmn-data-types-defining-proc_{context}']
 = Creating custom data types for DMN boxed expressions in {CENTRAL}
