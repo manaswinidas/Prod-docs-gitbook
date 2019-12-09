@@ -69,8 +69,8 @@ def get_file_with_parents(filepath, levels=1):
     return os.path.relpath(filepath, common)
 
 for line in lines:
-    if line.startswith !="// M":
-        output_lines.append("//" + line)                   
+    if line.startswith("// Mod"):
+        output_lines.append("// Modules - concepts, procedures, refs, etc.\n")               
     for file in glob.glob("doc-content/drools-docs/src/main/asciidoc/DMN/DMNDS/ds-dmn-con.asciidoc"):
         if("// Modules - concepts, procedures, refs, etc." in line):
             output_lines.append("include::{drools-dir}/"+get_file_with_parents(file, 1)+"[leveloffset=+1]\n")
