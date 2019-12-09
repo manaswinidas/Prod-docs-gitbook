@@ -1,7 +1,7 @@
 [id='gs-dmn-execution-con']
 
-include::DMNDS/dmn-execution-con.asciidoc[leveloffset=+1]
+:replaceWith: ds-dmn-execution-con.asciidoc
 
 [id='gs-dmn-execution-rest-proc']
 
-include::DMNDS/dmn-execution-rest-proc.asciidoc[leveloffset=+2]
+:replaceWith: ds-dmn-execution-rest-proc.asciidoc

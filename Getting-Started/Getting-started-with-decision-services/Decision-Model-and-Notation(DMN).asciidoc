@@ -1,6 +1,6 @@
 [id='gs-dmn-con']
 
-include::DMNDS/dmn-con.asciidoc[leveloffset=+1]
+:replaceWith: ds-dmn-con.asciidoc
 
 [id='gs-dmn-gs-creating-drd-proc']
 = Creating the traffic violations DMN decision requirements diagram (DRD)
