@@ -1,6 +1,7 @@
 [id='gs-dmn-con']
 
 :replaceWith: ds-dmn-con.asciidoc
+link: DMN-subtree/Authorising-Rules/Designing-a-decision-service-using-DMN-models/Decision-Model-and-Notation-DMN/Decision-Model-and-Notation-DMN.asciidoc [Decision Model and Notation]
 
 [id='gs-dmn-gs-creating-drd-proc']
 = Creating the traffic violations DMN decision requirements diagram (DRD)
