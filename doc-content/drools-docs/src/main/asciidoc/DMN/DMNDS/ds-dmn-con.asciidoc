@@ -1,0 +1,4 @@
+[id='gs-dmn-con']
+
+:replaceWith: ds-dmn-con.asciidoc
+

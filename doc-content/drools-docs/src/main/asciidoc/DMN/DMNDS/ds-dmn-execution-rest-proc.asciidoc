@@ -1,0 +1,3 @@
+[id='gs-dmn-execution-rest-proc']
+
+:replaceWith: ds-dmn-execution-rest-proc.asciidoc

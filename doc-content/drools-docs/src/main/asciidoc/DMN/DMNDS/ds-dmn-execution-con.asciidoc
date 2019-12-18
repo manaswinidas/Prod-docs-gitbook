@@ -1,0 +1,4 @@
+[id='gs-dmn-execution-con']
+
+:replaceWith: ds-dmn-execution-con.asciidoc
+
