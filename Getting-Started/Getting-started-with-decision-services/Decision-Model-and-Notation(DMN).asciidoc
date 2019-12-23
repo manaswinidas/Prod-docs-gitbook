@@ -1,7 +1,7 @@
 [id='gs-dmn-con']
 
 :replaceWith: ds-dmn-con.asciidoc
-link:DMN/wiki/Decision-Model-and-Notation-DMN[Decision Model and Notation]
+link:Decision-Model-and-Notation-DMN[Decision Model and Notation]
 
 [id='gs-dmn-gs-creating-drd-proc']
 = Creating the traffic violations DMN decision requirements diagram (DRD)
