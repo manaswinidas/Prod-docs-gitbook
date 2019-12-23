@@ -25,6 +25,10 @@ def get_file_name(part):
     """get file name using regex from fragment ID"""
     return re.findall(r"='(.*\-[a-z]+).*", part)[0]
 
+def leveloffset(fragment):
+    """get level offsets from meta attributes in files"""
+    return re.findall(r":l[A-z]+:\s(.+)", fragment)[0]
+
 all_files=[]
 def split(meta_attribute, files, dest, search_dir):
     """split the subtree files into fragments"""
@@ -45,8 +49,8 @@ def split(meta_attribute, files, dest, search_dir):
 
 def assembly_list(file, output_lines, assembly_line, leveloffset):
     """function to generate assembly lines per file"""
-    output_lines.append(
-        str(assembly_line)+get_file_with_parents(file, 1)+str(leveloffset)+"\n")
+    output_lines.append(str(
+        assembly_line+get_file_with_parents(file, 1)+leveloffset+leveloffset(file)+"]\n"))
 
 def assembly_generate(assembly_file, search_dir, assembly_line, leveloffset):
     """function to generate assembly"""
