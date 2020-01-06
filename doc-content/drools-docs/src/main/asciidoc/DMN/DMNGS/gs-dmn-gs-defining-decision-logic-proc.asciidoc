@@ -1,6 +1,6 @@
 [id='gs-dmn-gs-defining-decision-logic-proc']
 = Defining the traffic violations DMN decision logic
-
+:leveloffset: 2
 To calculate the fine and to decide whether the driver is to be suspended or not, you can define the traffic violations DMN decision logic using a DMN decision table and context boxed expression.
 
 .Fine decision table

@@ -1,7 +1,7 @@
 [id='gs-decision-examples-central-con_{context}']
 
 = Example projects and business assets in {CENTRAL}
-
+:leveloffset: 1
 {CENTRAL} contains example projects with example business assets that you can use as a reference for the
 ifdef::DM,DROOLS[]
 rules or other assets

@@ -1,6 +1,6 @@
 [id='gs-dmn-gs-assigning-custom-datatypes-proc']
 = Assigning custom data types to the DRD input and decision nodes
-
+:leveloffset: 2
 After you create the DMN custom data types, assign them to the appropriate *DMN Input Data* and *DMN Decision* nodes in the traffic violations DRD.
 
 .Prerequisites

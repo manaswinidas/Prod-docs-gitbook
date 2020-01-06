@@ -1,6 +1,6 @@
 [id='gs-dmn-gs-creating-custom-datatypes-proc']
 = Creating the traffic violations DMN custom data types
-
+:leveloffset: 2
 DMN data types determine the structure of the data that you use within a table, column, or field in a DMN boxed expression for defining decision logic. You can use default DMN data types (such as string, number, or boolean) or you can create custom data types to specify additional fields and constraints that you want to implement for the boxed expression values. Use the DMN designer's *Data Types* tab in {CENTRAL} to define the custom data types for the traffic violations project.
 
 .The custom data types tab

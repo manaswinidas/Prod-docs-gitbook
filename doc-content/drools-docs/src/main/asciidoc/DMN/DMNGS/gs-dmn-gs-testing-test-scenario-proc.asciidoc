@@ -1,6 +1,6 @@
 [id='gs-dmn-gs-testing-test-scenario-proc']
 = Testing the traffic violations using test scenarios
-
+:leveloffset: 2
 Use the test scenarios designer in {CENTRAL} to test the DMN decision requirements diagrams (DRDs) and define decision logic for the traffic violations project.
 
 .Test scenario for the traffic violations example

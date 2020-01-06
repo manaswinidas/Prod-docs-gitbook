@@ -1,4 +1,5 @@
 [id='gs-dmn-execution-con']
 
 :replaceWith: ds-dmn-execution-con.asciidoc
+link:/home/manaswini/Projects/foobar/Authorising-Rules/Designing-a-decision-service-using-DMN-models/Decision-Model-and-Notation-DMN/DMN-model-execution.asciidoc[DMN Model Execution]
 

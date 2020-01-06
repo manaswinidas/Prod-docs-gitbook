@@ -1,6 +1,6 @@
 [id='ds-dmn-execution-remote-java-proc']
 = Executing a DMN service using the {KIE_SERVER} Java client API
-
+:leveloffset: 2
 The {KIE_SERVER} Java client API provides a lightweight approach to invoking a remote DMN service either through the REST or JMS interfaces of {KIE_SERVER}. This approach reduces the number of runtime dependencies necessary to interact with a KIE base. Decoupling the calling code from the decision definition also increases flexibility by enabling them to iterate independently at the appropriate pace.
 
 For more information about the {KIE_SERVER} Java client API, see
