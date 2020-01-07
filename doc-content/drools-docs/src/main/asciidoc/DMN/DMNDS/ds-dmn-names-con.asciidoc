@@ -1,6 +1,6 @@
 [id='ds-dmn-names-con_{context}']
 = Variable and function names in FEEL
-
+:leveloffset: 3
 Unlike many traditional expression languages, Friendly Enough Expression Language (FEEL) supports spaces and a few special characters as part of variable and function names. A FEEL name must start with a `letter`, `?`, or `_` element. The unicode letter characters are also allowed. Variable names cannot start with a language keyword, such as `and`, `true`, or `every`. The remaining characters in a variable name can be any of the starting characters, as well as `digits`, white spaces, and special characters such as `+`, `-`, `/`, `*`, `'`, and `.`.
 
 For example, the following names are all valid FEEL names:

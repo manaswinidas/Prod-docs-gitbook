@@ -1,6 +1,6 @@
 [id='ds-dmn-designer-nav-ref_{context}']
 = DMN designer navigation and properties in {CENTRAL}
-
+:leveloffset: 2
 The DMN designer in {CENTRAL} provides the following additional features to help you navigate through the components and properties of decision requirements diagrams (DRDs).
 
 DMN file and diagram views::

@@ -1,6 +1,6 @@
 [id='ds-dmn-data-types-ref_{context}']
 = Data types in FEEL
-
+:leveloffset: 3
 Friendly Enough Expression Language (FEEL) supports the following data types:
 
 * Numbers

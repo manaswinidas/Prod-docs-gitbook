@@ -25,6 +25,11 @@ def get_file_name(part):
     """get file name using regex from fragment ID"""
     return re.findall(r"='(.*\-[a-z]+).*", part)[0]
 
+def get_replaceid(fragment):
+    """get replace id for shared content"""
+    replaceid=re.findall(r":[A-z]+:\s(.+)", fragment)[0]
+    return replaceid
+
 all_files=[]
 def split(meta_attribute, files, dest, search_dir):
     """split the subtree files into fragments"""
@@ -35,18 +40,17 @@ def split(meta_attribute, files, dest, search_dir):
                 if not fragment.strip():
                     continue  # make sure fragment_strip not empty
                 if meta_attribute in fragment:
-                    replaceid=re.findall(r":[A-z]+:\s(.+)", fragment)[0]
-                    file_name = str(find(replaceid, search_dir))
+                    file_name = str(find(get_replaceid(fragment), search_dir))
                 else:
                     file_name = dest+"/"+str(get_file_name(fragment))+".asciidoc"
                 all_files.append(file_name)
                 with open(file_name, "w") as f:
                     f.write("[id"+fragment)
 
-def assembly_list(file, output_lines, assembly_line, leveloffset):
+def assembly_list(file, output_lines, assembly_line, leveloffset, level):
     """function to generate assembly lines per file"""
     output_lines.append(
-        str(assembly_line)+get_file_with_parents(file, 1)+str(leveloffset)+"\n")
+        str(assembly_line)+get_file_with_parents(file, 1)+str(leveloffset)+str(level)+"]\n")
 
 def assembly_generate(assembly_file, search_dir, assembly_line, leveloffset):
     """function to generate assembly"""
@@ -62,7 +66,10 @@ def assembly_generate(assembly_file, search_dir, assembly_line, leveloffset):
                                             itertools.dropwhile(lambda x: '== Additional resources' not in x, fp)))
 
     for file in all_files:
-        assembly_list(file, output_lines, assembly_line, leveloffset)
+        with open(file, "r") as file_content:
+            # print(content+"\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\")
+            level=re.findall(r":[A-z]+:\s(.+)", file_content.read())[0]
+        assembly_list(file, output_lines, assembly_line, leveloffset, level)
 
     f = open(assembly_file, "w")
     final = linesbegin+output_lines+linesend

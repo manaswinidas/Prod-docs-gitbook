@@ -1,6 +1,6 @@
 [id='ds-dmn-included-models-proc_{context}']
 = Including other DMN models within a DMN file in {CENTRAL}
-
+:leveloffset: 2
 In {CENTRAL}, you can include other DMN models from your project in a specified DMN file so that you can reuse the decision requirements diagram (DRD) components of the included models in that DMN file. When you include a DMN model within another DMN file, you can use all of the nodes and logic from both models in the same DRD, but you cannot edit the nodes from the included model. To edit nodes from included models, you must update the source file for the included model directly. All changes to the source of the included model are automatically applied across DMN files that include that model.
 
 You cannot include DMN models from other projects in {CENTRAL}.

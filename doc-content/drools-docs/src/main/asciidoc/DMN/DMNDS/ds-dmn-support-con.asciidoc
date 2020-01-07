@@ -1,6 +1,6 @@
 [id='ds-dmn-support-con_{context}']
 = DMN support in {PRODUCT}
-
+:leveloffset: 1
 {PRODUCT} provides design and runtime support for DMN 1.2 models at conformance level 3. You can integrate DMN models with your {PRODUCT} decision services in several ways:
 
 * Design your DMN models directly in {CENTRAL} using the DMN designer
