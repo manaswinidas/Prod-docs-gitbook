@@ -2,4 +2,4 @@
 
 :replaceWith: ds-dmn-execution-rest-proc.asciidoc
 
-link:/home/manaswini/Projects/foobar/Authorising-Rules/Designing-a-decision-service-using-DMN-models/Decision-Model-and-Notation-DMN/DMN-model-execution.asciidoc[DMN Model Execution]
+link:https://github.com/manaswinidas/DMN/wiki/DMN-model-execution[DMN Model Execution]
