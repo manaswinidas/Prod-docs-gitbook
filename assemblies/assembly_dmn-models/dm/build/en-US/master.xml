@@ -1,64 +1,30 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<?asciidoc-toc?>
-<?asciidoc-numbered?>
-<book xmlns="http://docbook.org/ns/docbook" xmlns:xl="http://www.w3.org/1999/xlink" version="5.0">
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE book [
+<!ENTITY % sgml.features "IGNORE">
+<!ENTITY % xml.features "INCLUDE">
+<!ENTITY % DOCBOOK_ENTS PUBLIC "-//OASIS//ENTITIES DocBook Character Entities V4.5//EN" "http://www.oasis-open.org/docbook/xml/4.5/dbcentx.mod">
+%DOCBOOK_ENTS;
+]>
+<?asciidoc-toc?><?asciidoc-numbered?><book xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0">
 <info>
-<title>Getting started with decision services</title>
-<date>2019-12-02</date>
+<title>Designing a decision service using DMN models</title><subtitle>
+</subtitle>
+
+<date>2020-01-07</date>
 <productname>Red Hat Decision Manager</productname>
 <productnumber>7.5</productnumber>
-<subtitle>
-</subtitle>
 <abstract>
 <para>This document describes how to implement Decision Model and Notation (DMN) models in your decision services in Red Hat Decision Manager 7.5.</para>
 </abstract>
-<xi:include href="Common_Content/Legal_Notice.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="Common_Content/Legal_Notice.xml"/>
 </info>
 <preface>
 <title>Preface</title>
-<simpara>Red_Hat Customer_Content_Services &lt;<link xl:href="mailto:brms-docs@redhat.com">brms-docs@redhat.com</link>&gt;</simpara>
+<simpara>Red_Hat Customer_Content_Services &lt;<link xlink:href="mailto:brms-docs@redhat.com">brms-docs@redhat.com</link>&gt;</simpara>
 <simpara>As a business analyst or business rules developer, you can use Decision Model and Notation (DMN) to model a decision service graphically in a decision requirements diagram (DRD). This diagram consists of one or more decision requirements graphs (DRGs) that trace business decisions from start to finish, with each decision node using logic defined in DMN boxed expressions such as decision tables. Red Hat Decision Manager provides design and runtime support for DMN 1.2 models at conformance level 3. You can design your DMN models directly in Business Central or import existing DMN models into your Red Hat Decision Manager projects for deployment and execution.</simpara>
-<simpara>For more information about DMN, see the Object Management Group (OMG) <link xl:href="https://www.omg.org/spec/DMN">Decision Model and Notation specification</link>.</simpara>
+<simpara>For more information about DMN, see the Object Management Group (OMG) <link xlink:href="https://www.omg.org/spec/DMN">Decision Model and Notation specification</link>.</simpara>
 </preface>
-<chapter xml:id="gs-decision-examples-central-proc_dmn-models">
-<title>Accessing example projects and business assets in Business Central</title>
-<simpara>You can use the example projects in Business Central to explore example business assets as a reference for the rules or other assets that you create in your own Red Hat Decision Manager projects.</simpara>
-<itemizedlist>
-<title>Prerequisites</title>
-<listitem>
-<simpara>Business Central is installed and running. For installation options, see <link xl:href="https://access.redhat.com/documentation/en-us/red_hat_decision_manager/7.5/html-single/planning_a_red_hat_decision_manager_installation"><emphasis>Planning a Red Hat Decision Manager installation</emphasis></link>.</simpara>
-</listitem>
-</itemizedlist>
-<orderedlist numeration="arabic">
-<title>Procedure</title>
-<listitem>
-<simpara>In Business Central, go to <emphasis role="strong">Menu</emphasis> &#8594; <emphasis role="strong">Design</emphasis> &#8594; <emphasis role="strong">Projects</emphasis> and click <emphasis role="strong">Try Samples</emphasis>.</simpara>
-<simpara>If a project already exists, click the three vertical dots in the upper-right corner of the <emphasis role="strong">Projects</emphasis> page and click <emphasis role="strong">Try Samples</emphasis>.</simpara>
-</listitem>
-<listitem>
-<simpara>Review the descriptions for each sample project to determine which project you want to explore. Each sample project is designed differently to demonstrate
-decision management or business optimization
-assets and logic in Red Hat Decision Manager.</simpara>
-</listitem>
-<listitem>
-<simpara>Select one or more sample projects and click <emphasis role="strong">Ok</emphasis> to add the projects to your space.</simpara>
-</listitem>
-<listitem>
-<simpara>In the <emphasis role="strong">Projects</emphasis> page of your space, select one of the new example projects to view the example assets for that project.</simpara>
-</listitem>
-<listitem>
-<simpara>Select each example asset to explore how the project is designed to achieve the specified goal or workflow.</simpara>
-</listitem>
-<listitem>
-<simpara>In the upper-right corner of the project <emphasis role="strong">Assets</emphasis> page, click <emphasis role="strong">Build</emphasis> to build the sample project or <emphasis role="strong">Deploy</emphasis> to build the project and then deploy it to Decision Server.</simpara>
-<note>
-<simpara>You can also select the <emphasis role="strong">Build &amp; Install</emphasis> option to build the project and publish the KJAR file to the configured Maven repository without deploying to a Decision Server. In a development environment, you can click <emphasis role="strong">Deploy</emphasis> to deploy the built KJAR file to a Decision Server without stopping any running instances (if applicable), or click <emphasis role="strong">Redeploy</emphasis> to deploy the built KJAR file and replace all instances. The next time you deploy or redeploy the built KJAR, the previous deployment unit (KIE container) is automatically updated in the same target Decision Server. In a production environment, the <emphasis role="strong">Redeploy</emphasis> option is disabled and you can click <emphasis role="strong">Deploy</emphasis> only to deploy the built KJAR file to a new deployment unit (KIE container) on a Decision Server.</simpara>
-<simpara>To configure the Decision Server environment mode, set the <literal>org.kie.server.mode</literal> system property to <literal>org.kie.server.mode=development</literal> or <literal>org.kie.server.mode=production</literal>. To configure the deployment behavior for a corresponding project in Business Central, go to project <emphasis role="strong">Settings</emphasis> &#8594; <emphasis role="strong">General Settings</emphasis> &#8594; <emphasis role="strong">Version</emphasis> and toggle the <emphasis role="strong">Development Mode</emphasis> option. By default, Decision Server and all new projects in Business Central are in development mode. You cannot deploy a project with <emphasis role="strong">Development Mode</emphasis> turned on or with a manually added <literal>SNAPSHOT</literal> version suffix to a Decision Server that is in production mode.</simpara>
-</note>
-<simpara>To review project deployment details (if applicable), go to <emphasis role="strong">Menu</emphasis> &#8594; <emphasis role="strong">Deploy</emphasis> &#8594; <emphasis role="strong">Execution Servers</emphasis>.</simpara>
-</listitem>
-</orderedlist>
-<section xml:id="gs-decision-examples-central-con_dmn-models">
+<chapter xml:id="gs-decision-examples-central-con_dmn-models">
 <title>Example projects and business assets in Business Central</title>
 <simpara>Business Central contains example projects with example business assets that you can use as a reference for the
 rules or other assets
@@ -83,12 +49,50 @@ assets and logic in Red Hat Decision Manager.</simpara>
 <simpara><emphasis role="strong">OptaCloud</emphasis>: (Business optimization) Example resource allocation optimization using decision and solver assets. Assigns processes to computers with limited resources.</simpara>
 </listitem>
 <listitem>
-<simpara><emphasis role="strong">Course_Scheduling</emphasis>: (Business optimization) Example course scheduling and curriculum decision process. Assigns lectures to rooms and determines a student&#8217;s curriculum based on factors, such as course conflicts and class room capacity.</simpara>
+<simpara><emphasis role="strong">Course_Scheduling</emphasis>: (Business optimization) Example course scheduling and curriculum decision process. Assigns lectures to rooms and determines a student’s curriculum based on factors, such as course conflicts and class room capacity.</simpara>
 </listitem>
 <listitem>
-<simpara><emphasis role="strong">Dinner_Party</emphasis>: (Business optimization) Guest seating optimization using guided decision tables. Assigns guest seating based on each guest&#8217;s job type, political beliefs, and known relationships.</simpara>
+<simpara><emphasis role="strong">Dinner_Party</emphasis>: (Business optimization) Guest seating optimization using guided decision tables. Assigns guest seating based on each guest’s job type, political beliefs, and known relationships.</simpara>
 </listitem>
 </itemizedlist>
+<section xml:id="gs-decision-examples-central-proc_dmn-models">
+<title>Accessing example projects and business assets in Business Central</title>
+<simpara>You can use the example projects in Business Central to explore example business assets as a reference for the rules or other assets that you create in your own Red Hat Decision Manager projects.</simpara>
+<itemizedlist>
+<title>Prerequisites</title>
+<listitem>
+<simpara>Business Central is installed and running. For installation options, see <link xlink:href="https://access.redhat.com/documentation/en-us/red_hat_decision_manager/7.5/html-single/planning_a_red_hat_decision_manager_installation"><emphasis>Planning a Red Hat Decision Manager installation</emphasis></link>.</simpara>
+</listitem>
+</itemizedlist>
+<orderedlist numeration="arabic">
+<title>Procedure</title>
+<listitem>
+<simpara>In Business Central, go to <emphasis role="strong">Menu</emphasis> → <emphasis role="strong">Design</emphasis> → <emphasis role="strong">Projects</emphasis> and click <emphasis role="strong">Try Samples</emphasis>.</simpara>
+<simpara>If a project already exists, click the three vertical dots in the upper-right corner of the <emphasis role="strong">Projects</emphasis> page and click <emphasis role="strong">Try Samples</emphasis>.</simpara>
+</listitem>
+<listitem>
+<simpara>Review the descriptions for each sample project to determine which project you want to explore. Each sample project is designed differently to demonstrate
+decision management or business optimization
+assets and logic in Red Hat Decision Manager.</simpara>
+</listitem>
+<listitem>
+<simpara>Select one or more sample projects and click <emphasis role="strong">Ok</emphasis> to add the projects to your space.</simpara>
+</listitem>
+<listitem>
+<simpara>In the <emphasis role="strong">Projects</emphasis> page of your space, select one of the new example projects to view the example assets for that project.</simpara>
+</listitem>
+<listitem>
+<simpara>Select each example asset to explore how the project is designed to achieve the specified goal or workflow.</simpara>
+</listitem>
+<listitem>
+<simpara>In the upper-right corner of the project <emphasis role="strong">Assets</emphasis> page, click <emphasis role="strong">Build</emphasis> to build the sample project or <emphasis role="strong">Deploy</emphasis> to build the project and then deploy it to Decision Server.</simpara>
+<note>
+<simpara>You can also select the <emphasis role="strong">Build &amp; Install</emphasis> option to build the project and publish the KJAR file to the configured Maven repository without deploying to a Decision Server. In a development environment, you can click <emphasis role="strong">Deploy</emphasis> to deploy the built KJAR file to a Decision Server without stopping any running instances (if applicable), or click <emphasis role="strong">Redeploy</emphasis> to deploy the built KJAR file and replace all instances. The next time you deploy or redeploy the built KJAR, the previous deployment unit (KIE container) is automatically updated in the same target Decision Server. In a production environment, the <emphasis role="strong">Redeploy</emphasis> option is disabled and you can click <emphasis role="strong">Deploy</emphasis> only to deploy the built KJAR file to a new deployment unit (KIE container) on a Decision Server.</simpara>
+<simpara>To configure the Decision Server environment mode, set the <literal>org.kie.server.mode</literal> system property to <literal>org.kie.server.mode=development</literal> or <literal>org.kie.server.mode=production</literal>. To configure the deployment behavior for a corresponding project in Business Central, go to project <emphasis role="strong">Settings</emphasis> → <emphasis role="strong">General Settings</emphasis> → <emphasis role="strong">Version</emphasis> and toggle the <emphasis role="strong">Development Mode</emphasis> option. By default, Decision Server and all new projects in Business Central are in development mode. You cannot deploy a project with <emphasis role="strong">Development Mode</emphasis> turned on or with a manually added <literal>SNAPSHOT</literal> version suffix to a Decision Server that is in production mode.</simpara>
+</note>
+<simpara>To review project deployment details (if applicable), go to <emphasis role="strong">Menu</emphasis> → <emphasis role="strong">Deploy</emphasis> → <emphasis role="strong">Execution Servers</emphasis>.</simpara>
+</listitem>
+</orderedlist>
 </section>
 </chapter>
 <chapter xml:id="gs-dmn-gs-new-project-creating-proc">
@@ -100,13 +104,13 @@ assets and logic in Red Hat Decision Manager.</simpara>
 <simpara>Log in to Business Central.</simpara>
 </listitem>
 <listitem>
-<simpara>Go to <emphasis role="strong">Menu</emphasis> &#8594; <emphasis role="strong">Design</emphasis> &#8594; <emphasis role="strong">Projects</emphasis>.</simpara>
+<simpara>Go to <emphasis role="strong">Menu</emphasis> → <emphasis role="strong">Design</emphasis> → <emphasis role="strong">Projects</emphasis>.</simpara>
 <simpara>Red Hat Decision Manager provides a default space called <emphasis role="strong">MySpace</emphasis>, as shown in the following image. You can use the default space to create and test example projects.</simpara>
 <figure>
 <title>Default space</title>
 <mediaobject>
 <imageobject>
-<imagedata fileref="_images/getting-started/spaces-teams.png"/>
+<imagedata fileref="images/_images/getting-started/spaces-teams.png"/>
 </imageobject>
 <textobject><phrase>spaces teams</phrase></textobject>
 </mediaobject>
@@ -138,7 +142,7 @@ assets and logic in Red Hat Decision Manager.</simpara>
 <title>Add Project window with expanded Advanced Options</title>
 <mediaobject>
 <imageobject>
-<imagedata fileref="_images/dmn/dmn-new-project-gs.png"/>
+<imagedata fileref="images/_images/dmn/dmn-new-project-gs.png"/>
 </imageobject>
 <textobject><phrase>dmn new project gs</phrase></textobject>
 </mediaobject>
@@ -146,7 +150,11 @@ assets and logic in Red Hat Decision Manager.</simpara>
 <simpara>The <emphasis role="strong">Assets</emphasis> view of the project opens.</simpara>
 </listitem>
 </orderedlist>
-<simpara xml:id="gs-dmn-con">Unresolved directive in topics/drools-docs/src/main/asciidoc/DMN/DMNGS/gs-dmn-con.asciidoc - include::DMNDS/dmn-con.asciidoc[leveloffset=+1]</simpara>
+</chapter>
+<chapter xml:id="ds-dmn-con_dmn-models">
+<title>Decision Model and Notation (DMN)</title>
+<simpara>Decision Model and Notation (DMN) is a standard established by the Object Management Group (OMG) for describing and modeling operational decisions. DMN defines an XML schema that enables DMN models to be shared between DMN-compliant platforms and across organizations so that business analysts and business rules developers can collaborate in designing and implementing DMN decision services. The DMN standard is similar to and can be used together with the Business Process Model and Notation (BPMN) standard for designing and modeling business processes.</simpara>
+<simpara>For more information about the background and applications of DMN, see the OMG <link xlink:href="https://www.omg.org/spec/DMN">Decision Model and Notation specification</link>.</simpara>
 <section xml:id="gs-dmn-gs-creating-drd-proc">
 <title>Creating the traffic violations DMN decision requirements diagram (DRD)</title>
 <simpara>A decision requirements diagram (DRD) is a visual representation of your DMN model. Use the  DMN designer in Business Central to design the DRD for the traffic violations project and to define the decision logic of the DRD components.</simpara>
@@ -154,7 +162,7 @@ assets and logic in Red Hat Decision Manager.</simpara>
 <title>DRD for the Traffic Violations example</title>
 <mediaobject>
 <imageobject>
-<imagedata fileref="_images/dmn/dmn-traffic-violations-drd.png"/>
+<imagedata fileref="images/_images/dmn/dmn-traffic-violations-drd.png"/>
 </imageobject>
 <textobject><phrase>dmn traffic violations drd</phrase></textobject>
 </mediaobject>
@@ -168,7 +176,7 @@ assets and logic in Red Hat Decision Manager.</simpara>
 <orderedlist numeration="arabic">
 <title>Procedure</title>
 <listitem>
-<simpara>On the <emphasis role="strong">traffic-violation</emphasis> project&#8217;s home page, click <emphasis role="strong">Add Asset</emphasis>.</simpara>
+<simpara>On the <emphasis role="strong">traffic-violation</emphasis> project’s home page, click <emphasis role="strong">Add Asset</emphasis>.</simpara>
 </listitem>
 <listitem>
 <simpara>On the <emphasis role="strong">Add Asset</emphasis> page, click <emphasis role="strong">DMN</emphasis>. The <emphasis role="strong">Create new DMN</emphasis> window is opened.</simpara>
@@ -218,12 +226,12 @@ assets and logic in Red Hat Decision Manager.</simpara>
 </section>
 <section xml:id="gs-dmn-gs-creating-custom-datatypes-proc">
 <title>Creating the traffic violations DMN custom data types</title>
-<simpara>DMN data types determine the structure of the data that you use within a table, column, or field in a DMN boxed expression for defining decision logic. You can use default DMN data types (such as string, number, or boolean) or you can create custom data types to specify additional fields and constraints that you want to implement for the boxed expression values. Use the DMN designer&#8217;s <emphasis role="strong">Data Types</emphasis> tab in Business Central to define the custom data types for the traffic violations project.</simpara>
+<simpara>DMN data types determine the structure of the data that you use within a table, column, or field in a DMN boxed expression for defining decision logic. You can use default DMN data types (such as string, number, or boolean) or you can create custom data types to specify additional fields and constraints that you want to implement for the boxed expression values. Use the DMN designer’s <emphasis role="strong">Data Types</emphasis> tab in Business Central to define the custom data types for the traffic violations project.</simpara>
 <figure>
 <title>The custom data types tab</title>
 <mediaobject>
 <imageobject>
-<imagedata fileref="_images/dmn/dmn-custom-datatypes-tab.png"/>
+<imagedata fileref="images/_images/dmn/dmn-custom-datatypes-tab.png"/>
 </imageobject>
 <textobject><phrase>dmn custom datatypes tab</phrase></textobject>
 </mediaobject>
@@ -233,7 +241,7 @@ assets and logic in Red Hat Decision Manager.</simpara>
 <title>Diagram properties tab</title>
 <mediaobject>
 <imageobject>
-<imagedata fileref="_images/dmn/dmn-diagram-properties-tab.png"/>
+<imagedata fileref="images/_images/dmn/dmn-diagram-properties-tab.png"/>
 </imageobject>
 <textobject><phrase>dmn diagram properties tab</phrase></textobject>
 </mediaobject>
@@ -358,7 +366,7 @@ assets and logic in Red Hat Decision Manager.</simpara>
 <title>The tDriver custom data type</title>
 <mediaobject>
 <imageobject>
-<imagedata fileref="_images/dmn/dmn-tDriver-custom-datatype.png"/>
+<imagedata fileref="images/_images/dmn/dmn-tDriver-custom-datatype.png"/>
 </imageobject>
 <textobject><phrase>dmn tDriver custom datatype</phrase></textobject>
 </mediaobject>
@@ -393,7 +401,7 @@ assets and logic in Red Hat Decision Manager.</simpara>
 <title>The tViolation custom data type</title>
 <mediaobject>
 <imageobject>
-<imagedata fileref="_images/dmn/dmn-tViolation-custom-datatype.png"/>
+<imagedata fileref="images/_images/dmn/dmn-tViolation-custom-datatype.png"/>
 </imageobject>
 <textobject><phrase>dmn tViolation custom datatype</phrase></textobject>
 </mediaobject>
@@ -423,9 +431,9 @@ assets and logic in Red Hat Decision Manager.</simpara>
 </itemizedlist>
 </listitem>
 <listitem>
-<simpara>To add the following constraints to the <literal>Type</literal> nested data type, click <emphasis role="strong">Edit</emphasis> &#8594; <emphasis role="strong">Constraints</emphasis> &#8594; <emphasis role="strong">Enumeration</emphasis> and add the following constraints. Click the check icon <inlinemediaobject>
+<simpara>To add the following constraints to the <literal>Type</literal> nested data type, click <emphasis role="strong">Edit</emphasis> → <emphasis role="strong">Constraints</emphasis> → <emphasis role="strong">Enumeration</emphasis> and add the following constraints. Click the check icon <inlinemediaobject>
 <imageobject>
-<imagedata fileref="_images/dmn/dmn-datatype-constraints-tickmark.png"/>
+<imagedata fileref="images/_images/dmn/dmn-datatype-constraints-tickmark.png"/>
 </imageobject>
 <textobject><phrase>dmn datatype constraints tickmark</phrase></textobject>
 </inlinemediaobject> to save each enumeration constraint that you add.</simpara>
@@ -447,7 +455,7 @@ assets and logic in Red Hat Decision Manager.</simpara>
 <title>The tFine custom data type</title>
 <mediaobject>
 <imageobject>
-<imagedata fileref="_images/dmn/dmn-tFine-custom-datatype.png"/>
+<imagedata fileref="images/_images/dmn/dmn-tFine-custom-datatype.png"/>
 </imageobject>
 <textobject><phrase>dmn tFine custom datatype</phrase></textobject>
 </mediaobject>
@@ -513,7 +521,7 @@ assets and logic in Red Hat Decision Manager.</simpara>
 <simpara>Click <emphasis role="strong">Save</emphasis> to open the <emphasis role="strong">Confirm Save</emphasis> dialog box and click <emphasis role="strong">Save</emphasis> again.</simpara>
 </listitem>
 </orderedlist>
-<simpara>You have assigned the custom data types to your DRD&#8217;s input and decision nodes.</simpara>
+<simpara>You have assigned the custom data types to your DRD’s input and decision nodes.</simpara>
 </section>
 <section xml:id="gs-dmn-gs-defining-decision-logic-proc">
 <title>Defining the traffic violations DMN decision logic</title>
@@ -522,7 +530,7 @@ assets and logic in Red Hat Decision Manager.</simpara>
 <title>Fine decision table</title>
 <mediaobject>
 <imageobject>
-<imagedata fileref="_images/dmn/dmn-gs-fine-decision-table.png"/>
+<imagedata fileref="images/_images/dmn/dmn-gs-fine-decision-table.png"/>
 </imageobject>
 <textobject><phrase>dmn gs fine decision table</phrase></textobject>
 </mediaobject>
@@ -531,7 +539,7 @@ assets and logic in Red Hat Decision Manager.</simpara>
 <title>Should the driver be suspended?</title>
 <mediaobject>
 <imageobject>
-<imagedata fileref="_images/dmn/dmn-gs-context-table.png"/>
+<imagedata fileref="images/_images/dmn/dmn-gs-context-table.png"/>
 </imageobject>
 <textobject><phrase>dmn gs context table</phrase></textobject>
 </mediaobject>
@@ -548,7 +556,7 @@ assets and logic in Red Hat Decision Manager.</simpara>
 <simpara>To calculate fine, in the DMN designer canvas, select the <emphasis role="strong">Fine</emphasis> decision node and click the <emphasis role="strong">Edit</emphasis> icon to open the DMN boxed expression designer.</simpara>
 </listitem>
 <listitem>
-<simpara>Click <emphasis role="strong">Select expression</emphasis> &#8594; <emphasis role="strong">Decision Table</emphasis>.</simpara>
+<simpara>Click <emphasis role="strong">Select expression</emphasis> → <emphasis role="strong">Decision Table</emphasis>.</simpara>
 </listitem>
 <listitem>
 <simpara>For the <emphasis role="strong">Violation.Date</emphasis>, <emphasis role="strong">Violation.Code</emphasis>, and <emphasis role="strong">Violation.Speed Limit</emphasis> parameter fields, right-click and select <emphasis role="strong">Delete</emphasis> for each field.</simpara>
@@ -643,7 +651,7 @@ assets and logic in Red Hat Decision Manager.</simpara>
 <simpara>To define the driver suspension rule, return to the DMN designer canvas, select the <emphasis role="strong">Should the driver be suspended?</emphasis> decision node, and click the <emphasis role="strong">Edit</emphasis> icon to open the DMN boxed expression designer.</simpara>
 </listitem>
 <listitem>
-<simpara>Click <emphasis role="strong">Select expression</emphasis> &#8594; <emphasis role="strong">Context</emphasis>.</simpara>
+<simpara>Click <emphasis role="strong">Select expression</emphasis> → <emphasis role="strong">Context</emphasis>.</simpara>
 </listitem>
 <listitem>
 <simpara>Click <emphasis role="strong">ContextEntry-1</emphasis>, enter <literal>Total Points</literal> as the <emphasis role="strong">Name</emphasis>, and select <literal>number</literal> as the <emphasis role="strong">Data Type</emphasis>.</simpara>
@@ -677,7 +685,7 @@ assets and logic in Red Hat Decision Manager.</simpara>
 <title>Test scenario for the traffic violations example</title>
 <mediaobject>
 <imageobject>
-<imagedata fileref="_images/dmn/dmn-gs-traffic-violation-test-scenarios.png"/>
+<imagedata fileref="images/_images/dmn/dmn-gs-traffic-violation-test-scenarios.png"/>
 </imageobject>
 <textobject><phrase>dmn gs traffic violation test scenarios</phrase></textobject>
 </mediaobject>
@@ -691,7 +699,7 @@ assets and logic in Red Hat Decision Manager.</simpara>
 <orderedlist numeration="arabic">
 <title>Procedure</title>
 <listitem>
-<simpara>On the <emphasis role="strong">traffic-violation</emphasis> project&#8217;s home screen, click <emphasis role="strong">Add Asset</emphasis> to open the <emphasis role="strong">Add Asset</emphasis> screen.</simpara>
+<simpara>On the <emphasis role="strong">traffic-violation</emphasis> project’s home screen, click <emphasis role="strong">Add Asset</emphasis> to open the <emphasis role="strong">Add Asset</emphasis> screen.</simpara>
 </listitem>
 <listitem>
 <simpara>Click <emphasis role="strong">Test Scenario</emphasis> to open the <emphasis role="strong">Create new Test Scenario</emphasis> dialog.</simpara>
@@ -877,7 +885,7 @@ assets and logic in Red Hat Decision Manager.</simpara>
 <title>Test scenario execution result for the traffic violations example</title>
 <mediaobject>
 <imageobject>
-<imagedata fileref="_images/dmn/dmn-gs-test-scenarios-execution-results.png"/>
+<imagedata fileref="images/_images/dmn/dmn-gs-test-scenarios-execution-results.png"/>
 </imageobject>
 <textobject><phrase>dmn gs test scenarios execution results</phrase></textobject>
 </mediaobject>
@@ -892,30 +900,30 @@ assets and logic in Red Hat Decision Manager.</simpara>
 <simpara>You can create or import DMN files in your Red Hat Decision Manager project using Business Central or package the DMN files as part of your project knowledge JAR (KJAR) file without Business Central. After you implement your DMN files in your Red Hat Decision Manager project, you can execute the DMN decision service by deploying the KIE container that contains it to Decision Server for remote access
 or by manipulating the KIE container directly as a dependency of the calling application. Other options for creating and deploying DMN knowledge packages are also available, and most are similar for all types of knowledge assets, such as DRL files or process definitions.</simpara>
 <simpara>For information about including external DMN assets with your project packaging and deployment method, see
-<link xl:href="https://access.redhat.com/documentation/en-us/red_hat_decision_manager/7.5/html-single/packaging_and_deploying_a_red_hat_decision_manager_project"><emphasis>Packaging and deploying a Red Hat Decision Manager project</emphasis></link>.</simpara>
+<link xlink:href="https://access.redhat.com/documentation/en-us/red_hat_decision_manager/7.5/html-single/packaging_and_deploying_a_red_hat_decision_manager_project"><emphasis>Packaging and deploying a Red Hat Decision Manager project</emphasis></link>.</simpara>
 <section xml:id="ds-dmn-execution-rest-proc">
 <title>Executing a DMN service using the Decision Server REST API</title>
 <simpara>Directly interacting with the REST endpoints of Decision Server provides the most separation between the calling code and the decision logic definition. The calling code is completely free of direct dependencies, and you can implement it in an entirely different development platform such as <literal>node.js</literal> or <literal>.net</literal>. The examples in this section demonstrate Nix-style curl commands but provide relevant information to adapt to any REST client.</simpara>
 <simpara>For more information about the Decision Server REST API, see
-<link xl:href="https://access.redhat.com/documentation/en-us/red_hat_decision_manager/7.5/html-single/interacting_with_red_hat_decision_manager_using_kie_apis"><emphasis>Interacting with Red Hat Decision Manager using KIE APIs</emphasis></link>.</simpara>
+<link xlink:href="https://access.redhat.com/documentation/en-us/red_hat_decision_manager/7.5/html-single/interacting_with_red_hat_decision_manager_using_kie_apis"><emphasis>Interacting with Red Hat Decision Manager using KIE APIs</emphasis></link>.</simpara>
 <itemizedlist>
 <title>Prerequisites</title>
 <listitem>
 <simpara>Decision Server is installed and configured, including a known user name and credentials for a user with the <literal>kie-server</literal> role. For installation options, see
-<link xl:href="https://access.redhat.com/documentation/en-us/red_hat_decision_manager/7.5/html-single/planning_a_red_hat_decision_manager_installation"><emphasis>Planning a Red Hat Decision Manager installation</emphasis></link>.</simpara>
+<link xlink:href="https://access.redhat.com/documentation/en-us/red_hat_decision_manager/7.5/html-single/planning_a_red_hat_decision_manager_installation"><emphasis>Planning a Red Hat Decision Manager installation</emphasis></link>.</simpara>
 </listitem>
 <listitem>
 <simpara>A KIE container is deployed in Decision Server in the form of a KJAR that includes the DMN model, ideally compiled as an executable model for more efficient execution:</simpara>
 <screen>mvn clean install -DgenerateDMNModel=yes</screen>
 <simpara>For more information about project packaging and deployment and executable models, see
-<link xl:href="https://access.redhat.com/documentation/en-us/red_hat_decision_manager/7.5/html-single/packaging_and_deploying_a_red_hat_decision_manager_project"><emphasis>Packaging and deploying a Red Hat Decision Manager project</emphasis></link>.</simpara>
+<link xlink:href="https://access.redhat.com/documentation/en-us/red_hat_decision_manager/7.5/html-single/packaging_and_deploying_a_red_hat_decision_manager_project"><emphasis>Packaging and deploying a Red Hat Decision Manager project</emphasis></link>.</simpara>
 </listitem>
 <listitem>
 <simpara>You have the container ID of the KIE container containing the DMN model. If more than one model is present, you must also know the model namespace and model name of the relevant model.</simpara>
 </listitem>
 <listitem>
 <simpara>You have the DMN model deployed. For more information about project deployment, see
-<link xl:href="https://access.redhat.com/documentation/en-us/red_hat_decision_manager/7.5/html-single/packaging_and_deploying_a_red_hat_decision_manager_project#project-build-deploy-central-proc_packaging-deploying"><emphasis>Packaging and deploying a Red Hat Decision Manager project</emphasis></link>.</simpara>
+<link xlink:href="https://access.redhat.com/documentation/en-us/red_hat_decision_manager/7.5/html-single/packaging_and_deploying_a_red_hat_decision_manager_project#project-build-deploy-central-proc_packaging-deploying"><emphasis>Packaging and deploying a Red Hat Decision Manager project</emphasis></link>.</simpara>
 </listitem>
 </itemizedlist>
 <orderedlist numeration="arabic">
@@ -1102,20 +1110,20 @@ or by manipulating the KIE container directly as a dependency of the calling app
 </orderedlist>
 </section>
 </chapter>
-<chapter xml:id="_additional_resources">
+<chapter xml:id="additional_resources" remap="_additional_resources">
 <title>Additional resources</title>
 <itemizedlist>
 <listitem>
-<simpara><link xl:href="https://www.omg.org/spec/DMN">Decision Model and Notation specification</link></simpara>
+<simpara><link xlink:href="https://www.omg.org/spec/DMN">Decision Model and Notation specification</link></simpara>
 </listitem>
 <listitem>
-<simpara><link xl:href="https://dmn-tck.github.io/tck/">DMN Technology Compatibility Kit</link></simpara>
+<simpara><link xlink:href="https://dmn-tck.github.io/tck/">DMN Technology Compatibility Kit</link></simpara>
 </listitem>
 <listitem>
-<simpara><link xl:href="https://access.redhat.com/documentation/en-us/red_hat_decision_manager/7.5/html-single/packaging_and_deploying_a_red_hat_decision_manager_project"><emphasis>Packaging and deploying a Red Hat Decision Manager project</emphasis></link></simpara>
+<simpara><link xlink:href="https://access.redhat.com/documentation/en-us/red_hat_decision_manager/7.5/html-single/packaging_and_deploying_a_red_hat_decision_manager_project"><emphasis>Packaging and deploying a Red Hat Decision Manager project</emphasis></link></simpara>
 </listitem>
 <listitem>
-<simpara><link xl:href="https://access.redhat.com/documentation/en-us/red_hat_decision_manager/7.5/html-single/interacting_with_red_hat_decision_manager_using_kie_apis"><emphasis>Interacting with Red Hat Decision Manager using KIE APIs</emphasis></link></simpara>
+<simpara><link xlink:href="https://access.redhat.com/documentation/en-us/red_hat_decision_manager/7.5/html-single/interacting_with_red_hat_decision_manager_using_kie_apis"><emphasis>Interacting with Red Hat Decision Manager using KIE APIs</emphasis></link></simpara>
 </listitem>
 </itemizedlist>
 </chapter>

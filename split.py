@@ -38,21 +38,23 @@ def split(meta_attribute, files, dest, search_dir):
             content = fragment_content.read()
             for fragment in content.split("[id"):
                 if not fragment.strip():
-                    continue  # make sure fragment_strip not empty
+                    continue  # make sure fragment not empty
                 if meta_attribute in fragment:
-                    file_name = str(find(get_replaceid(fragment), search_dir))
+                    replaceid=get_replaceid(fragment)
+                    file_name=str(find(replaceid, search_dir))
                 else:
                     file_name = dest+"/"+str(get_file_name(fragment))+".asciidoc"
                 all_files.append(file_name)
-                with open(file_name, "w") as f:
-                    f.write("[id"+fragment)
+                if meta_attribute not in fragment:
+                    with open(file_name, "w") as f:
+                        f.write("[id"+fragment)
 
 def assembly_list(file, output_lines, assembly_line, leveloffset, level):
     """function to generate assembly lines per file"""
     output_lines.append(
         str(assembly_line)+get_file_with_parents(file, 1)+str(leveloffset)+str(level)+"]\n")
 
-def assembly_generate(assembly_file, search_dir, assembly_line, leveloffset):
+def assembly_generate(assembly_file, search_dir, assembly_line, leveloffset, meta_attribute):
     """function to generate assembly"""
     output_lines = []
     with open(assembly_file) as fp:
@@ -67,7 +69,6 @@ def assembly_generate(assembly_file, search_dir, assembly_line, leveloffset):
 
     for file in all_files:
         with open(file, "r") as file_content:
-            # print(content+"\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\")
             level=re.findall(r":[A-z]+:\s(.+)", file_content.read())[0]
         assembly_list(file, output_lines, assembly_line, leveloffset, level)
 
@@ -95,7 +96,7 @@ def main():
         logging.error('The directory already exists')
     files = [f for f in glob.glob(split_source+"/*.asciidoc", recursive=True)]
     split(meta_attribute, files, split_dest, search_dir)
-    assembly_generate(assembly_file, search_dir, assembly_line, leveloffset)
+    assembly_generate(assembly_file, search_dir, assembly_line, leveloffset, meta_attribute)
     
 if __name__ == "__main__":
     main()
