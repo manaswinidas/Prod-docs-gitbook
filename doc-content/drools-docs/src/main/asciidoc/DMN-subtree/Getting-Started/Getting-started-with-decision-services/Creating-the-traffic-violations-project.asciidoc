@@ -5,7 +5,7 @@ For this example, create a new project called `traffic-violation`. A project is 
 
 .Procedure
 . Log in to {CENTRAL}.
-. Go to *Men* -> *Design* -> *Projects*.
+. Go to *Menu* -> *Design* -> *Projects*.
 +
 
 {PRODUCT} provides a default space called *MySpace*, as shown in the following image. You can use the default space to create and test example projects.
