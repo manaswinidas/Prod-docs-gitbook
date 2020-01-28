@@ -2,3 +2,4 @@
 .project
 assemblies/assembly_dmn-models/dm/build/tmp/en-US/html-single/node_modules
 .history/
+doc-content/drools-docs/src/main/asciidoc/DMN/
